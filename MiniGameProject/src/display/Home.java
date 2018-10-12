@@ -1,4 +1,4 @@
-package games;
+package display;
 
 import javafx.application.Application;
 import javafx.scene.Group;

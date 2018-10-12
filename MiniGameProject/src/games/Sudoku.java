@@ -2,7 +2,7 @@ package games;
 
 public class Sudoku {
 
-	protected Grid G;
+	protected display.Grid G;
 	protected int Gsize;	//Taille de la grille
 	protected int Rsize;    //Taille de la région
 	

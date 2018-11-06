@@ -1,5 +1,6 @@
 package display;
 
+import games.Hangman;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -12,16 +13,11 @@ public class Home extends Application {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Grid grille = new Grid(9);
-
-        grille.valeurGrille();
-        grille.afficheGrille();
-        
-        
-		//Library.test();
 		//Application.launch(Home.class, args);
 		
-		
+		Hangman h = new Hangman();
+	
+		h.startGame();
 		
 	}
 

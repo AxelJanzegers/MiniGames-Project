@@ -11,7 +11,15 @@ public class Home extends Application {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Application.launch(Home.class, args);
+		
+		Grid grille = new Grid(9);
+
+        grille.valeurGrille();
+        grille.afficheGrille();
+        
+        
+		//Library.test();
+		//Application.launch(Home.class, args);
 		
 		
 		
@@ -23,14 +31,9 @@ public class Home extends Application {
 		primaryStage.setTitle("Des Chiffres et Des Lettres");
 		Group root = new Group();
         Scene scene = new Scene(root, 1200, 720, Color.LIGHTGREY);
-        MainMenu menu = new MainMenu();
-        primaryStage.setScene(scene);
-        
-        
-        
-                
+       // MainMenu menu = new MainMenu();
+        primaryStage.setScene(scene);    
         primaryStage.show();
-
 	}
 
 }

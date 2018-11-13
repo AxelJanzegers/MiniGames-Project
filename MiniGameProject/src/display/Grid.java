@@ -1,10 +1,32 @@
 package display;
 
-import java.util.Random;
+//import java.util.Random;
 
 public class Grid {
 
-    protected int taille;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+ /*   protected int taille;
     Random r = new Random();
 
     protected int[][] t;
@@ -35,6 +57,6 @@ public class Grid {
 
             }
         }
-    }
+    }*/
 }
 	

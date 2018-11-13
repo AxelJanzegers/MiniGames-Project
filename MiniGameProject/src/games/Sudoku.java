@@ -13,17 +13,6 @@ public class Sudoku {
 	}
 	
 	public void GenererGrille() {
-		this.t[][] = { 
-				{1,2,3,4,5,6,7,8,9},
-				{2,3,4,5,6,7,8,9,1},
-				{3,4,5,6,7,8,9,1,2},
-				{4,5,6,7,8,9,1,2,3},
-				{5,6,7,8,9,1,2,3,4},
-				{6,7,8,9,1,2,3,4,5},
-				{7,8,9,1,2,3,4,5,6},
-				{8,9,1,2,3,4,5,6,7},
-				{9,1,2,3,4,5,6,7,8}
-		};
 	}
 
 	public int VerifieUnicite() {
@@ -31,18 +20,6 @@ public class Sudoku {
 	}
 	
 	public void GridDisplay() {
-		for (int i = 0 ; i < this.gSize ; i++ ) {
-			for (int j = 0 ; j < gSize ; j++) {
-				System.out.print(this.t[i][j] + "  ");
-				if(j == 2 || j == 5) {
-					System.out.print(" | ");
-				}
-			}
-			System.out.println();
-			if(i == 2 || i == 5 ) {
-				System.out.println("--------------------------------");
-			}
-		}
 	}
 	
 	public void SaisirUnCoup() {

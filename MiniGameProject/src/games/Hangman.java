@@ -58,10 +58,6 @@ public class Hangman {
 		}
 	}
 	
-	
-
-	
-	
 	public void startGame() {
 		while (!(Tword.equals(answer)) && fails<10 && l!='0') {
 			System.out.println(answer);
@@ -70,13 +66,6 @@ public class Hangman {
 			if(Tword.equals(answer)) System.out.println("Félicitations !");
 		}
 		sc.close();
-		
-		
 	}
-	
-	
-	
-	
-	
-	
 }
+

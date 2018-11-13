@@ -45,6 +45,14 @@ public abstract class Library {
 	}
 	
 	
+	public static String GiveWordofXLetters(int x) {
+		while(word.length()!=x) {
+			GiveWord();
+		}
+		return word;
+	}
+	
+	
 }
 	
 	

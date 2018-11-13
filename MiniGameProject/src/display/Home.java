@@ -16,9 +16,8 @@ public class Home extends Application {
 		//Application.launch(Home.class, args);
 		
 		Hangman h = new Hangman();
-	
 		h.startGame();
-		
+			
 	}
 
 	@Override

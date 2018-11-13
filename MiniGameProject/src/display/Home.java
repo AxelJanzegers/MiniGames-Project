@@ -1,6 +1,7 @@
 package display;
 
 import games.Hangman;
+import games.Motus;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -15,8 +16,10 @@ public class Home extends Application {
 		
 		//Application.launch(Home.class, args);
 		
+		Motus m = new Motus();
 		Hangman h = new Hangman();
-		h.startGame();
+		m.startGame();
+		//h.startGame();
 			
 	}
 

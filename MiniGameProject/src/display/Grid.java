@@ -1,62 +1,40 @@
 package display;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 //import java.util.Random;
 
 public class Grid {
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
- /*   protected int taille;
-    Random r = new Random();
 
-    protected int[][] t;
+	static File grilleSudoku = new File("GrilleSudoku/grille09x09_00.dat");
+	String[] tableau = new String[0];
+	
+	public void afficheGrille() {
+		try { 
+			InputStream ips=new FileInputStream(grilleSudoku); 
+			InputStreamReader ipsr=new InputStreamReader(ips); 
+			BufferedReader br = new BufferedReader(ipsr); 
+			String ligne;
+			
+			while ((ligne=br.readLine())!=null){ 
+				String[] oldTableau = tableau; 
+				int noligne = oldTableau.length; 
+				tableau = new String[noligne+1];
+				System.arraycopy(oldTableau, 0, tableau,0, noligne); 
+				tableau[noligne] = ligne; 
 
-    public Grid(int taille) {
-        this.taille = taille;
-        this.t =  new int[taille][taille];
-    }
-
-    public void valeurGrille() {
-        for (int i = 0 ; i<this.taille ; i++ ) {
-            for (int j = 0 ; j<this.taille ; j++) {
-                t[i][j] = r.nextInt(9);
-            }
-        }
-    }
-    public void afficheGrille() {
-        for (int i = 0 ; i<this.taille ; i++ ) {
-            for (int j = 0 ; j<this.taille ; j++) {
-                System.out.print(this.t[i][j] + "  ");
-                if(j == 2 || j == 5) {
-                    System.out.print(" | ");
-                }
-            }
-            System.out.println();
-            if(i == 2 || i == 5 ) {
-                System.out.println("--------------------------------");
-
-            }
-        }
-    }*/
+				System.out.println(tableau[noligne]); 
+			} 
+			
+			br.close(); 
+			
+		} catch (Exception e) { 
+			System.out.println(e.toString()); 
+		} 
+	} 
 }
-	

@@ -1,5 +1,7 @@
 package display;
 
+import java.io.File;
+
 import games.Hangman;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -10,15 +12,20 @@ import javafx.stage.Stage;
 
 public class Home extends Application {
 
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 
-        //Application.launch(Home.class, args);
+		//Application.launch(Home.class, args);
 
-        Hangman h = new Hangman();
-        h.startGame();
+		// Hangman h = new Hangman();
+		// h.startGame();
 
-    }
+		Grid grille = new Grid();
+		grille.afficheGrille();
+
+	} 
+
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -31,4 +38,5 @@ public class Home extends Application {
         primaryStage.show();
     }
 
+    
 }

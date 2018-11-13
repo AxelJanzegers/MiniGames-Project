@@ -1,5 +1,6 @@
 package display;
 
+import games.Sudoku;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -12,10 +13,11 @@ public class Home extends Application {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Grid grille = new Grid(9);
-
-        grille.valeurGrille();
-        grille.afficheGrille();
+		Sudoku g1 = new Sudoku();
+		
+		g1.GenererGrille();
+		g1.GridDisplay();
+        
         
         
 		//Library.test();

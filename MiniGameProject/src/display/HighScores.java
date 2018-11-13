@@ -1,4 +1,4 @@
-package games;
+package display;
 
 public class HighScores {
 

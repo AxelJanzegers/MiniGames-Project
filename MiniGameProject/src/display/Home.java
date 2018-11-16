@@ -4,6 +4,7 @@ package display;
 import java.io.File;
 
 import games.Hangman;
+import games.Motus;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,10 +19,21 @@ public class Home extends Application {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+<<<<<<< HEAD
 
 		Application.launch(Home.class, args);
 
 
+=======
+		
+		//Application.launch(Home.class, args);
+		
+		Motus m = new Motus();
+		Hangman h = new Hangman();
+		m.startGame();
+		//h.startGame();
+			
+>>>>>>> matthieu
 	}
 
 	@Override

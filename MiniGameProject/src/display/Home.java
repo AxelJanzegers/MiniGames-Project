@@ -1,6 +1,7 @@
 package display;
 
 import java.io.File;
+import java.util.Arrays;
 
 import games.Hangman;
 import javafx.application.Application;
@@ -20,8 +21,8 @@ public class Home extends Application {
 		// Hangman h = new Hangman();
 		// h.startGame();
 
-		Grid grille = new Grid();
-		grille.afficheGrille();
+		Grid grille = new Grid(10,9);
+		System.out.println(Arrays.deepToString(grille.getTab()));
 
 	} 
 

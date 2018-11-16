@@ -7,12 +7,12 @@ import display.Library;
 
 public class Hangman {
 	
-	String word;
-	char[] Tword;
-	char[] answer; //Tableau avec les lettres entrées par l'utilisateur
-	int fails; //nombre d'erreurs
-	char l;
-	Scanner sc = new Scanner(System.in);
+	private String word;
+	private char[] Tword;
+	private char[] answer; //Tableau avec les lettres entrées par l'utilisateur
+	private int fails; //nombre d'erreurs
+	private char l;
+	public Scanner sc = new Scanner(System.in);
 	
 	
 	public Hangman() {

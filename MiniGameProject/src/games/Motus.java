@@ -7,13 +7,13 @@ import display.Library;
 
 public class Motus {
 	
-	String word;
-	char[] Tword;  //Tableau qui détient le mot recherché , n'est jamais affiché
-	char[] answer; //Tableau vide au départ affichant petit a petit la réponse
-	char[] Twordsc;
-	int tries; //nombre d'essais
-	String wordsc;
-	Scanner sc = new Scanner(System.in);
+	private String word;
+	private char[] Tword;  //Tableau qui détient le mot recherché , n'est jamais affiché
+	private char[] answer; //Tableau vide au départ affichant petit a petit la réponse
+	private char[] Twordsc;
+	private int tries; //nombre d'essais
+	private String wordsc;
+	public Scanner sc = new Scanner(System.in);
 
 	public Motus() {
 		this.word = Library.GiveWord();		

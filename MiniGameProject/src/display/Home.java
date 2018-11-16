@@ -18,8 +18,6 @@ public class Home extends Application {
 		// TODO Auto-generated method stub
 
 		Application.launch(Home.class, args);
-
-
 	}
 
 	@Override
@@ -47,5 +45,5 @@ public class Home extends Application {
 		primaryStage.setScene(scene);    
 		primaryStage.show();
 	}
+}
 
-} s

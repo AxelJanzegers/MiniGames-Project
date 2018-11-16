@@ -2,6 +2,14 @@ package display;
 
 
 import java.io.File;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+import java.util.Arrays;
+=======
+>>>>>>> 110b683fa9cd9fe4769bc67f47af3d2e129e393b
+>>>>>>> ae7853de5f81c3c84d9ae56510c3a13e7b6a32c6
+>>>>>>> 557cf3cd10f4b2a6e9ff08d0743b88d34551dd03
 
 import games.Hangman;
 import games.Motus;
@@ -62,5 +70,32 @@ public class Home extends Application {
 		primaryStage.show();
 	}
 
+<<<<<<< HEAD
 }  
+=======
+} s
+=======
+		//Application.launch(Home.class, args);
+
+		// Hangman h = new Hangman();
+		// h.startGame();
+
+		Grid grille = new Grid(10,9);
+		System.out.println(Arrays.deepToString(grille.getTab()));
+
+	} 
+
+
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        // TODO Auto-generated method stub
+        primaryStage.setTitle("Des Chiffres et Des Lettres");
+        Group root = new Group();
+        Scene scene = new Scene(root, 1200, 720, Color.LIGHTGREY);
+       // MainMenu menu = new MainMenu();
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+>>>>>>> 557cf3cd10f4b2a6e9ff08d0743b88d34551dd03
 

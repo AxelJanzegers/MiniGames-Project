@@ -11,25 +11,40 @@ import java.io.InputStreamReader;
 public class Grid {
 
 
-	static File grilleSudoku = new File("GrilleSudoku/grille09x09_00.dat");
-	String[] tableau = new String[0];
+	char[][] g;
+	File file;
+	File test = new File("GrilleSudoku/grille09x09_00.dat");
+	
+	
+	public Grid (int n) {
+		g = new char[n][n];
+		
+	}
+	
+	public Grid(int n, int m) {
+		g=new char[n][m];
+	}
+	
+	public Grid (int n, File f) {
+		g = new char[n][n];
+		this.file=f;
+		
+	}
+	
+	
+	public void createGrid() {
+		
+	}
 	
 	public void afficheGrille() {
 		try { 
-			InputStream ips=new FileInputStream(grilleSudoku); 
+			InputStream ips=new FileInputStream(test); 
 			InputStreamReader ipsr=new InputStreamReader(ips); 
 			BufferedReader br = new BufferedReader(ipsr); 
 			String ligne;
 			
-			while ((ligne=br.readLine())!=null){ 
-				String[] oldTableau = tableau; 
-				int noligne = oldTableau.length; 
-				tableau = new String[noligne+1];
-				System.arraycopy(oldTableau, 0, tableau,0, noligne); 
-				tableau[noligne] = ligne; 
-
-				System.out.println(tableau[noligne]); 
-			} 
+			
+			
 			
 			br.close(); 
 			

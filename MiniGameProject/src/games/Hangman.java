@@ -1,5 +1,6 @@
 package games;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import display.Library;
@@ -26,10 +27,12 @@ public class Hangman {
 	
 	public void enterLetter() {
 		System.out.println("Entrez une lettre : (Entrez 0 pour quitter)");
-		
 		l=sc.nextLine().toUpperCase().charAt(0);
+		
 		verif(l);
 	}
+	
+	
 	
 	public void verif(char l) {
 		int presence = 0; //variable qui signalisera la présence de la lettre entrée, passe à 1 si la lettre est trouvée, envoie le prog error si la var reste à 0
@@ -59,11 +62,12 @@ public class Hangman {
 	}
 	
 	public void startGame() {
-		while (!(Tword.equals(answer)) && fails<10 && l!='0') {
+		while (!(Arrays.equals(Tword, answer)) && fails<10 && l!='0') {
 			System.out.println(answer);
+			System.out.println(word);
 			System.out.println("Erreurs restantes : "+(10-fails));
 			enterLetter();
-			if(Tword.equals(answer)) System.out.println("Félicitations !");
+			if(Arrays.equals(Tword, answer)) System.out.println("Félicitations ! Le mot était en effet : "+ word);
 		}
 		sc.close();
 	}

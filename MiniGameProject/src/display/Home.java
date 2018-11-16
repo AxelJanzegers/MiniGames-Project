@@ -1,7 +1,6 @@
 package display;
 
 
-import java.io.File;
 
 import games.Hangman;
 import games.Motus;
@@ -22,10 +21,14 @@ public class Home extends Application {
 		
 		//Application.launch(Home.class, args);
 		
-		Motus m = new Motus();
+		//Motus m = new Motus();
 		Hangman h = new Hangman();
-		m.startGame();
-		//h.startGame();
+		h.startGame();
+		
+		
+	}
+	
+	public void testArthur() {
 		
 	}
 

@@ -7,13 +7,14 @@ import display.Library;
 
 public class Hangman {
 	
-	String word;
-	char[] Tword;
-	char[] answer; //Tableau avec les lettres entrées par l'utilisateur
-	int fails; //nombre d'erreurs
-	char l;
-	Scanner sc = new Scanner(System.in);
+
 	int score = 45;
+	private String word; //mot provenant de la bibliothèque
+	private char[] Tword; //tableau où est stocké word
+	private char[] answer; //Tableau avec les lettres entrées par l'utilisateur
+	private int fails; //nombre d'erreurs
+	private char l; //lettre entrée par l'utilisateur
+	public Scanner sc = new Scanner(System.in);
 	
 	
 	public Hangman() {
@@ -28,10 +29,12 @@ public class Hangman {
 	
 	public void enterLetter() {
 		System.out.println("Entrez une lettre : (Entrez 0 pour quitter)");
-		
 		l=sc.nextLine().toUpperCase().charAt(0);
+		
 		verif(l);
 	}
+	
+	
 	
 	public void verif(char l) {
 		int presence = 0; //variable qui signalisera la présence de la lettre entrée, passe à 1 si la lettre est trouvée, envoie le prog error si la var reste à 0
@@ -78,11 +81,13 @@ public class Hangman {
 				+ "Mot trouvé avec 7 erreurs : 15 pts \n"
 				+ "Mot trouvé avec 8 erreurs : 10 pts \n"
 				+ "Mot trouvé avec 9 erreurs : 5 pts \n");
-		while (!(Tword.equals(answer)) && fails<10 && l!='0') {
+		
+		while (!(Arrays.equals(Tword, answer)) && fails<10 && l!='0') {
 			System.out.println(answer);
+			System.out.println(word);
 			System.out.println("Erreurs restantes : "+(10-fails));
 			enterLetter();
-			if(Tword.equals(answer)) System.out.println("Félicitations !");
+			if(Arrays.equals(Tword, answer)) System.out.println("Félicitations ! Le mot était en effet : "+ word);
 		}
 		sc.close();
 	}

@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.LineNumberReader;
 import java.util.Random;
 
 public abstract class Library {
@@ -22,7 +21,6 @@ public abstract class Library {
 			FileInputStream fis= new FileInputStream(library);
 			InputStreamReader isr=new InputStreamReader(fis);
 			BufferedReader br=new BufferedReader(isr);
-			LineNumberReader lnr = new LineNumberReader(isr);
 			int line= 1 + random.nextInt(369086 - 1);
 			int i=0;
 			while (i<(line-1)){

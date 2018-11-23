@@ -8,6 +8,7 @@ import display.Library;
 
 public class Motus {
 	
+
 	String word;
 	char[] Tword;  //Tableau qui détient le mot recherché , n'est jamais affiché
 	char[] answer; //Tableau vide au départ affichant petit a petit la réponse
@@ -16,6 +17,7 @@ public class Motus {
 	String wordsc;
 	Scanner sc = new Scanner(System.in);
 	int score = 40;
+
 
 	public Motus() {
 		this.word = Library.GiveWordofXLetters(6);		

@@ -1,9 +1,8 @@
 package display;
 
-
-
 import games.Hangman;
 import games.Motus;
+import games.WordSearchPuzzle;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,9 +20,8 @@ public class Home extends Application {
 		
 		//Application.launch(Home.class, args);
 		
-		//Motus m = new Motus();
-		Hangman h = new Hangman();
-		h.startGame();
+		WordSearchPuzzle w = new WordSearchPuzzle();
+		w.startGame();
 		
 		
 	}

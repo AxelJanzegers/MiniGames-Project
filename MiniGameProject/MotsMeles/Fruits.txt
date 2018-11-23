@@ -1,4 +1,4 @@
-banane|ananas|cerise|pomme|prune|poire|orange|kiwi|fraise|peche|abricot|citron
+banane-ananas-cerise-pomme-prune-poire-orange-kiwi-fraise-peche-abricot-citron
 ABCDEEHCEP
 EFRAISEOJU
 NBCTOCIRBA

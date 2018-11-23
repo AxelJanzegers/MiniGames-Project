@@ -7,11 +7,11 @@ import display.Library;
 
 public class Hangman {
 	
-	private String word;
-	private char[] Tword;
+	private String word; //mot provenant de la bibliothèque
+	private char[] Tword; //tableau où est stocké word
 	private char[] answer; //Tableau avec les lettres entrées par l'utilisateur
 	private int fails; //nombre d'erreurs
-	private char l;
+	private char l; //lettre entrée par l'utilisateur
 	public Scanner sc = new Scanner(System.in);
 	
 	

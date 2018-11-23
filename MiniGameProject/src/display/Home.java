@@ -1,9 +1,6 @@
 package display;
 
-<<<<<<< HEAD
-=======
-import java.io.File;
->>>>>>> 110b683fa9cd9fe4769bc67f47af3d2e129e393b
+
 
 import games.Hangman;
 import games.Motus;
@@ -19,65 +16,19 @@ import javafx.stage.Stage;
 
 public class Home extends Application {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-		Application.launch(Home.class, args);
+    public static void main(String[] args) {
 
 
-=======
-		
-		//Application.launch(Home.class, args);
-		
-		Motus m = new Motus();
-		Hangman h = new Hangman();
-		m.startGame();
-		//h.startGame();
-			
->>>>>>> matthieu
-	}
+        //Application.launch(Home.class, args);
 
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
-		primaryStage.setTitle("Des Chiffres et Des Lettres");
-		Group root = new Group();
-		Scene scene = new Scene(root, 1200, 720, Color.LIGHTGREY);
-		Button btn = new Button();
+    	Motus m = new Motus();
+    	m.startGame();
 
+    }
 
-		btn.setLayoutX(500);
-		btn.setLayoutY(380);
-		btn.setText("Pendu");
-		btn.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				Hangman h = new Hangman();
-				h.startGame();
-			}
-		});
+    public void testArthur() {
 
-		root.getChildren().add(btn);
-		// MainMenu menu = new MainMenu();
-
-		primaryStage.setScene(scene);    
-		primaryStage.show();
-	}
-
-} s
-=======
-		//Application.launch(Home.class, args);
-
-		// Hangman h = new Hangman();
-		// h.startGame();
-
-		Grid grille = new Grid();
-		grille.afficheGrille();
-
-	} 
-
-
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -85,11 +36,26 @@ public class Home extends Application {
         primaryStage.setTitle("Des Chiffres et Des Lettres");
         Group root = new Group();
         Scene scene = new Scene(root, 1200, 720, Color.LIGHTGREY);
-       // MainMenu menu = new MainMenu();
+        Button btn = new Button();
+
+
+        btn.setLayoutX(500);
+        btn.setLayoutY(380);
+        btn.setText("Pendu");
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                Hangman h = new Hangman();
+                h.startGame();
+            }
+        });
+
+        root.getChildren().add(btn);
+        // MainMenu menu = new MainMenu();
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-    
 }
->>>>>>> 110b683fa9cd9fe4769bc67f47af3d2e129e393b
+
+
+

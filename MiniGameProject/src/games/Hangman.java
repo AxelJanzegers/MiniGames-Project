@@ -1,5 +1,6 @@
 package games;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import display.Library;
@@ -12,6 +13,7 @@ public class Hangman {
 	int fails; //nombre d'erreurs
 	char l;
 	Scanner sc = new Scanner(System.in);
+	int score = 45;
 	
 	
 	public Hangman() {
@@ -52,13 +54,30 @@ public class Hangman {
 	}
 	
 	public void error() {
+		if(fails==0 && (Arrays.equals(Tword,answer))) {
+			System.out.println(" Bravo vous avez le meilleur score , vous avez 100/100 !");
+		}
+		else {
 		fails++;
+		score = score -5;
 		if(fails==10) {
 			System.out.println("Partie terminée. Le mot était "+ word);
+			System.out.println("Score : 0 ");
+		}
 		}
 	}
 	
 	public void startGame() {
+		System.out.println("Mot trouvé sans erreurs : 100 pts \n"
+				+ "Mot trouvé avec 1 erreur : 45 pts \n"
+				+ "Mot trouvé avec 2 erreurs : 40 pts \n"
+				+ "Mot trouvé avec 3 erreurs : 35 pts \n"
+				+ "Mot trouvé avec 4 erreurs : 30 pts \n"
+				+ "Mot trouvé avec 5 erreurs : 25 pts \n"
+				+ "Mot trouvé avec 6 erreurs : 20 pts \n"
+				+ "Mot trouvé avec 7 erreurs : 15 pts \n"
+				+ "Mot trouvé avec 8 erreurs : 10 pts \n"
+				+ "Mot trouvé avec 9 erreurs : 5 pts \n");
 		while (!(Tword.equals(answer)) && fails<10 && l!='0') {
 			System.out.println(answer);
 			System.out.println("Erreurs restantes : "+(10-fails));

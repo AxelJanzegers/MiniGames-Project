@@ -7,7 +7,7 @@ import games.WordSearchPuzzle;
 import java.io.File;
 import java.util.Arrays;
 
-import display.view.*;
+import gui.*;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -42,7 +42,7 @@ public class Home extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
         primaryStage.setTitle("Des Chiffres et Des Lettres");
-        Parent root = FXMLLoader.load(getClass().getResource("view/Dis.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/Dis.fxml"));
         Scene scene = new Scene(root);
        // MainMenu menu = new MainMenu();
         primaryStage.setScene(scene);

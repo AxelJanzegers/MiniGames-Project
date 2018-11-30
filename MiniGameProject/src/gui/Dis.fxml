@@ -12,12 +12,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DisController">
    <center>
       <FlowPane alignment="CENTER" hgap="20.0" prefHeight="200.0" prefWidth="200.0" vgap="20.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="SUDOKU" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="PENDU" />
+            <Button fx:id="hangman" mnemonicParsing="false" onAction="#startHangman" prefHeight="100.0" prefWidth="120.0" text="PENDU" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="MOTUS" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="MOTS MELES" />
             <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="WORDOKU" textAlignment="CENTER" wrapText="true" />

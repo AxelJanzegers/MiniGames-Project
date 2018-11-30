@@ -86,7 +86,7 @@ public class WordSearchPuzzle {
 		g = new Grid(11,10,f);	
 		setWords();
 		
-		String beg, end; //Variables utilisées pour stocker les coordonnées du 1er et dernier caractère d'un mot
+		String beg, end; //Variables utilisées pour stocker les coordonnées de la première et dernière case d'un mot
 		g.displayGridWSP(); //Affichage de la grille
 		
 		System.out.println("\nMots à trouver : ");

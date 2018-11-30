@@ -6,30 +6,29 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-<<<<<<< HEAD
+
 import java.util.Arrays;
-=======
+
 import java.util.Scanner;
->>>>>>> axel
+
 
 
 public class Grid {
 
-<<<<<<< HEAD
+
 	char[][] tab;
 	File file;
 	File test = new File("GrilleSudoku/grille09x09_00.dat");
-=======
+
 	static File grilleSudoku;
-	char[][] tab;
 	char[] tabAuto;
->>>>>>> axel
+
 	int x,y;
-<<<<<<< HEAD
+
 	Scanner sc = new Scanner(System.in);
-=======
+
 	char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
->>>>>>> arthur
+
 	
 	/*
 	 * Constructeur grille sans fichier (motus)
@@ -49,7 +48,7 @@ public class Grid {
 		this.x = x;
 		this.y = y;
 		tab = new char[this.x-1][this.y];
-<<<<<<< HEAD
+
 		try {
 			FileInputStream fis= new FileInputStream(f);
 			InputStreamReader isr=new InputStreamReader(fis);
@@ -69,7 +68,7 @@ public class Grid {
 			e.printStackTrace();
 
 		} 
-=======
+
 		tabAuto = new char[9];
 		int str = 0;
 		
@@ -149,7 +148,7 @@ public class Grid {
 	public char[] getTabAuto() {
 		return tabAuto;
 	}
->>>>>>> axel
+
 
 	public void setTabAuto(char[] tabAuto) {
 		this.tabAuto = tabAuto;

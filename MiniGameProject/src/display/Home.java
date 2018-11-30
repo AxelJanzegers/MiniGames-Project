@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 public class Home extends Application {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		//Application.launch(Home.class, args);
 
@@ -30,7 +29,6 @@ public class Home extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // TODO Auto-generated method stub
         primaryStage.setTitle("Des Chiffres et Des Lettres");
         Group root = new Group();
         Scene scene = new Scene(root, 1200, 720, Color.LIGHTGREY);

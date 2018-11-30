@@ -9,6 +9,8 @@ public class Sudoku {
 	
 	Grid grille;
 	Scanner sc = new Scanner(System.in);
+	char[] tab1D = new char[81];
+	
 	
 	public Sudoku() {
 		this.grille = new Grid(10,9);
@@ -67,7 +69,7 @@ public class Sudoku {
 			if(estAutorise(val)) {
 				char tmp = grille.getTab()[l][c];
 				grille.getTab()[l][c] = val;
-				if((l < 0 && l >= 9) || (c < 0 && c >= 9) || Character.compare(tmp,'0') != 0 && !verifieRegion()) {
+				if((l < 0 && l >= 9) || (c < 0 && c >= 9) || Character.compare(tmp,'0') != 0 || !verifieLigne()) {
 					System.out.println("Coup incorrect");
 					grille.getTab()[l][c] = tmp;
 				}
@@ -115,19 +117,22 @@ public class Sudoku {
 		return true;
 	}
 	
-	public boolean verifieRegion() {
-		char[] tab2 = new char[this.grille.getTab().length];
+	public void tab2DTo1D() {
 		int pos = 0;
 		for(int i = 0 ; i < 3 ; i++) {
 			for(int j = 0 ; j < 3 ; j++) {
-				tab2[pos] = this.grille.getTab()[i][j];
+				this.tab1D[pos] = this.grille.getTab()[i][j];
 				pos++;
 			}
 		}
-		int cpt = 0;
+	}
+
+	public boolean verifieRegion() {
+		/*int cpt = 0;
 		for(char tmp : this.grille.getTabAuto()) {
-			for(int k = 0 ; k < tab2.length ; k++) {
-				if(Character.compare(tmp, tab2[k]) == 0 && cpt < 2) {
+			cpt = 0;
+			for(int k = 0 ; k < 9 ; k++) {
+				if(Character.compare(tmp, this.tab1D[k]) == 0 && cpt < 2) {
 					cpt++;
 				}
 				else if(cpt == 2) {
@@ -136,7 +141,10 @@ public class Sudoku {
 				}
 			}
 		}
-		return true;
+		System.out.println("TU ME PETE LES COUILLES SUDOKU DE MERDE");
+		return true;*/
+		System.out.println("ALLO");
+		return false;
 	}
 
 	

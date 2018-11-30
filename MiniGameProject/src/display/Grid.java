@@ -50,7 +50,7 @@ public class Grid {
 			default:
 				System.out.println("Veuillez entre une valeur entre 1 et 4");
 			}
-		} while (str <0 && str > 4);
+		} while (str < 0 || str >= 4);
 		}
 		else {
 			do {
@@ -71,9 +71,9 @@ public class Grid {
 					grilleSudoku = new File("GrilleSudoku/grilleL_expert.dat");
 					break;
 				default:
-					System.out.println("Veuillez entre une valeur entre 1 et 4");
+					System.out.println("Veuillez entre une valeur entre 1 et 4 :");
 				}
-			} while (str <0 && str > 4);
+			} while (str < 0 || str >= 4);
 		}
 		
 		if(str > 0 && str <= 4) {

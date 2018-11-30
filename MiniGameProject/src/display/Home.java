@@ -1,8 +1,15 @@
 package display;
 
+<<<<<<< HEAD
 import games.Hangman;
 import games.Motus;
 import games.WordSearchPuzzle;
+=======
+import java.io.File;
+import java.util.Arrays;
+
+import games.*;
+>>>>>>> axel
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -35,6 +42,16 @@ public class Home extends Application {
 	}
 	
 
+<<<<<<< HEAD
+=======
+		// Hangman h = new Hangman();
+		// h.startGame();
+
+		Sudoku s = new Sudoku();
+		s.afficherGrille();
+		s.jouerUnCoup();
+	} 
+>>>>>>> axel
 
 
 }

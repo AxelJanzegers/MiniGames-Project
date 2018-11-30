@@ -3,7 +3,7 @@ package display;
 import java.io.File;
 import java.util.Arrays;
 
-import games.Hangman;
+import games.*;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -21,9 +21,9 @@ public class Home extends Application {
 		// Hangman h = new Hangman();
 		// h.startGame();
 
-		Grid grille = new Grid(10,9);
-		System.out.println(Arrays.deepToString(grille.getTab()));
-
+		Sudoku s = new Sudoku();
+		s.afficherGrille();
+		s.jouerUnCoup();
 	} 
 
 

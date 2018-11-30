@@ -27,6 +27,10 @@ public class Hangman {
 		fails = 0;
 	}
 	
+	/*
+	 * Demande une lettre à l'utilisateur d'entrer une lettre puis 
+	 * appelle la fonction verif
+	 */
 	public void enterLetter() {
 		System.out.println("Entrez une lettre : (Entrez 0 pour quitter)");
 		l=sc.nextLine().toUpperCase().charAt(0);
@@ -35,7 +39,9 @@ public class Hangman {
 	}
 	
 	
-	
+	/*
+	 * Partie verifications
+	 */
 	public void verif(char l) {
 		int presence = 0; //variable qui signalisera la présence de la lettre entrée, passe à 1 si la lettre est trouvée, envoie le prog error si la var reste à 0
 		int i=0;
@@ -55,6 +61,7 @@ public class Hangman {
 		}
 		if(presence==0) error();
 	}
+	
 	
 	public void error() {
 		if(fails==0 && (Arrays.equals(Tword,answer))) {

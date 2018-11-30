@@ -25,18 +25,26 @@ public class Grid {
 	char[] tabAuto;
 >>>>>>> axel
 	int x,y;
+<<<<<<< HEAD
 	Scanner sc = new Scanner(System.in);
+=======
+	char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+>>>>>>> arthur
 	
-	
-	public Grid(int x, int y) { //constructeur de la grille
+	/*
+	 * Constructeur grille sans fichier (motus)
+	 */
+	public Grid(int x, int y) {
 		this.x=x;
 		this.y=y;
 		tab = new char[this.x][this.y];
 		
 	}
 	
-	
-	public Grid(int x, int y, File f) { //Constructeur de la grille avec fichier
+	/*
+	 * Constructeur grille avec fichier (sudoku, mots meles)
+	 */
+	public Grid(int x, int y, File f) { 
 
 		this.x = x;
 		this.y = y;
@@ -146,7 +154,22 @@ public class Grid {
 	public void setTabAuto(char[] tabAuto) {
 		this.tabAuto = tabAuto;
 	}
+	
+	/*
+	 * Renvoie un indice pour une lettre donnée
+	 */
+	public int letterToInt(char c) {
+		int i=0;
+		while(i<alphabet.length) {
+			if(alphabet[i]==c) return i+1;
+		}
+		
+		return 0;
+	}
 
+	/*
+	 * GETTER SETTER
+	 */
 	public char[][] getTab() {
 		return tab;
 	}
@@ -155,9 +178,11 @@ public class Grid {
 		this.tab = tab;
 	} 
 	
-	
+	/*
+	 * Affichage de grille pour les mots meles
+	 */
 	public void displayGridWSP() {
-		char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+		
 		System.out.println("    1 2 3 4 5 6 7 8 9 10\n");
 		for(int i=0;i<this.x-1;i++) {
 			System.out.print(alphabet[i]+"   ");

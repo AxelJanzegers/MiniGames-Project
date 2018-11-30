@@ -12,19 +12,22 @@ import display.Grid;
 
 public class WordSearchPuzzle {
 	
-	Grid g;
-	File f;
+	private Grid g;
+	private File f;
 	public Scanner sc = new Scanner(System.in);
-	String[] words;
+	private String[] words;
+	private String answer;
+	private char[] Tbeg;
+	private char[] Tend;
 	
-	public WordSearchPuzzle() {
-		selectGrid();
-		g = new Grid(11,10,f);	
-		setWords();
-		
-	}
 	
-	public void selectGrid() {
+	public WordSearchPuzzle() {}
+	
+	
+	/*
+	 * Selection de la grille
+	 */
+	public void selectGrid() { 
 		System.out.println("Choisissez la grille 1, 2 ou 3");
 		int choix =sc.nextInt();
 		if(choix==1) {
@@ -32,7 +35,12 @@ public class WordSearchPuzzle {
 		}
 	}
 	
-	public void setWords() {
+	
+	/*
+	 * Initialise les mots à trouver
+	 */
+	
+	public void setWords() { 
 		try{
 			FileInputStream fis= new FileInputStream(f);
 			InputStreamReader isr=new InputStreamReader(fis);
@@ -49,16 +57,47 @@ public class WordSearchPuzzle {
 		
 	}
 	
+	/*
+	 * Affiche les mots à trouver
+	 */
 	public void dispWords() {
 		for(int i=0; i<words.length;i++) {
 			System.out.print(words[i]+" ");
 		}
 	}
 	
+	
+	
+	/*
+	 * Obtient le mot défini par les coordonnées entrées par l'user
+	 */
+	public void makeWord(String beginning, String end) {
+		Tbeg=beginning.toCharArray();
+		Tend=end.toCharArray();
+		System.out.println(Tbeg[1]);
+		System.out.println(g.getTab()[g.letterToInt(Tbeg[0])][2]);
+	}
+	
+	/*
+	 * DEMARRAGE DU JEU
+	 */
 	public void startGame() {
-		g.displayGridWSP();
+		selectGrid();
+		g = new Grid(11,10,f);	
+		setWords();
+		
+		String beg, end; //Variables utilisées pour stocker les coordonnées du 1er et dernier caractère d'un mot
+		g.displayGridWSP(); //Affichage de la grille
+		
 		System.out.println("\nMots à trouver : ");
 		dispWords();
+		
+		System.out.println("\nEntrez les coordonnées de la première lettre du mot à trouver (ex : A3, B2...) : ");
+		beg = sc.nextLine().toUpperCase();
+		System.out.println("\nEntrez les coordonnées de la dernière lettre du mot à trouver (ex : E3, B7...) : ");
+		end = sc.nextLine().toUpperCase();
+		makeWord(beg, end);
+		
 	}
 	
 }

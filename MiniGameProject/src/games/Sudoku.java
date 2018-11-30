@@ -1,9 +1,13 @@
 package games;
 
+<<<<<<< HEAD
+import display.Grid;
+=======
 import java.util.Arrays;
 import java.util.Scanner;
 
 import display.*;
+>>>>>>> axel
 
 public class Sudoku {
 	

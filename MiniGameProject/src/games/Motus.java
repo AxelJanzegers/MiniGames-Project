@@ -16,7 +16,7 @@ public class Motus {
 	int tries; //nombre d'essais
 	String wordsc;
 	Scanner sc = new Scanner(System.in);
-	int score = 40;
+	Score score = new Score();
 
 
 	public Motus() {
@@ -44,24 +44,35 @@ public class Motus {
 	public void verif() {
 		int i=0;
 		int j=0;
+		int ilenfautun = 0;
 		if(answer.length == Twordsc.length) {
 			while(i<Tword.length) {
+				if(Twordsc[i] == answer[i]) score.BadAnswer();
+				else {
 					if(Tword[i] == Twordsc[i]) {
 						answer[i]=Tword[i];
+						score.GoodAnswer(100);
+						ilenfautun++;
+						
 				}
 					else for(j=0;j<Tword.length;j++)
 						if(Twordsc[i] == Tword[j]) {
 							System.out.println("la lettre "+Twordsc[i]+ " a la postion " + (i+1) + " n'est pas a la bonne place ");
+							score.GoodAnswer(50);
 						}
+				}
 					
 				i++;
 			}
 			MaxTriesNormal();
+			if (ilenfautun!=0) score.BadAnswer();
 		}
 		else {
 			System.out.println("Mauvais nombre de lettres");
 			MaxTriesNormal();
+			score.BadAnswer();
 		}
+		score.AfficheScore();
 	}
 	
 	public void displayWord() {
@@ -69,63 +80,38 @@ public class Motus {
 	}
 	
 	public void MaxTriesFacile() {
-		if(tries==0 && (Arrays.equals(Tword,answer))) {
-			System.out.println(" Bravo vous avez le meilleur score , vous avez 100/100 !");
-		}
-		else {
 		tries++;
-		score = score -5;
 			if(tries==4 && !(Arrays.equals(Tword,answer))) {
 			System.out.println("Partie terminée. Le mot était "+ word);
 			System.out.println("Score : 0 ");
 			}
-		}
 	}
 	
 	public void MaxTriesNormal() {
-		if(tries==0 && (Arrays.equals(Tword,answer))) {
-			System.out.println(" Bravo vous avez le meilleur score , vous avez 100/100 !");
-		}
-		else {
 		tries++;
-		score = score -5;
 			if(tries==6 && !(Arrays.equals(Tword,answer))) {
 			System.out.println("Partie terminée. Le mot était "+ word);
 			System.out.println("Score : 0 ");
 			}
-		}
 	}
 	
 	public void MaxTriesDifficile() {
-		if(tries==0 && (Arrays.equals(Tword,answer))) {
-			System.out.println(" Bravo vous avez le meilleur score , vous avez 100/100 !");
-		}
-		else {
 		tries++;
-		score = score -5;
 			if(tries==8 && !(Arrays.equals(Tword,answer))) {
 			System.out.println("Partie terminée. Le mot était "+ word);
-			System.out.println("Score : 0");
 			}
-		}
 	}
 	
 	public void startGame() {
-		System.out.println("Mot trouvé sans erreurs : 100 pts \n"
-				+ "Mot trouvé avec 1 erreur : 40 pts \n"
-				+ "Mot trouvé avec 2 erreurs : 35 pts \n"
-				+ "Mot trouvé avec 3 erreurs : 30 pts \n"
-				+ "Mot trouvé avec 4 erreurs : 25 pts \n"
-				+ "Mot trouvé avec 5 erreurs : 15 pts \n");
 		while (!(Arrays.equals(Tword, answer)) && tries<6) {
 			answer[0]=Tword[0];
 			System.out.println(answer);
 			System.out.println("Essais restants : "+(6-tries));
+			displayWord();
 			enterWord();
 		}
 			if(Arrays.equals(Tword,answer)) {
 				System.out.println(" Le mot etait " +word);
-				System.out.println("Score : "+score);
 				System.out.println("Pas mal pour un amateur !");
 			}
 		sc.close();

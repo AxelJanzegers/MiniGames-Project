@@ -30,10 +30,22 @@ public class WordSearchPuzzle {
 	public void selectGrid() { 
 		System.out.println("Choisissez la grille 1, 2 ou 3");
 		int choix =sc.nextInt();
-		if(choix==1) {
-			f = new File("MotsMeles/Fruits.txt");
+				do {
+					switch(choix) {
+					case 1 :
+						f = new File("MotsMeles/Fruits.txt");
+						break;
+					case 2 : 
+						f = new File("MotsMeles/Fruits.txt");
+						break;
+					case 3 :
+						f = new File("MotsMeles/Fruits.txt");
+						break;
+					default:
+						System.out.println("Choisissez la grille 1, 2 ou 3");
+					}
+				} while (choix <1 || choix >= 4);
 		}
-	}
 	
 	
 	/*

@@ -7,8 +7,6 @@ import games.WordSearchPuzzle;
 import java.io.File;
 import java.util.Arrays;
 
-import display.view.*;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,9 +25,10 @@ public class Home extends Application {
 	public static void main(String[] args) {
 		
 		Application.launch(args);
-		WordSearchPuzzle w = new WordSearchPuzzle();
 		//Hangman h = new Hangman();
 		//w.startGame();
+		Motus m = new Motus();
+		m.startGame();
 		
 		
 	}
@@ -40,14 +39,12 @@ public class Home extends Application {
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
-        primaryStage.setTitle("Des Chiffres et Des Lettres");
-        Parent root = FXMLLoader.load(getClass().getResource("view/Dis.fxml"));
-        Scene scene = new Scene(root);
-       // MainMenu menu = new MainMenu();
-        primaryStage.setScene(scene);
-        primaryStage.show();
-		
+		//Motus m = new Motus();
+		//m.startGame();
+		//Hangman h = new Hangman();
+		//h.startGame();
+		WordSearchPuzzle w = new WordSearchPuzzle();
+		w.startGame();
 	}
 
 

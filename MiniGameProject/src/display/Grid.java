@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 public class Grid {
 
+<<<<<<< HEAD
 
 	char[][] tab;
 	File file;
@@ -23,6 +24,13 @@ public class Grid {
 	static File grilleSudoku;
 	char[] tabAuto;
 
+=======
+	char[][] tab;
+	File file;
+	//File test = new File("GrilleSudoku/grille09x09_00.dat");
+	//static File grilleSudoku;
+	char[] tabAuto;
+>>>>>>> axel
 	int x,y;
 
 	Scanner sc = new Scanner(System.in);
@@ -45,16 +53,21 @@ public class Grid {
 	 */
 	public Grid(int x, int y, File f) { 
 
+		tabAuto = new char[9];
 		this.x = x;
 		this.y = y;
 		tab = new char[this.x-1][this.y];
+<<<<<<< HEAD
 
+=======
+>>>>>>> axel
 		try {
 			FileInputStream fis= new FileInputStream(f);
 			InputStreamReader isr=new InputStreamReader(fis);
 			BufferedReader br=new BufferedReader(isr);
 			String tmp;
 			tmp = br.readLine();	
+			tabAuto = tmp.toCharArray();
 				for(int i=1 ; i < this.x ; i++) {
 					tmp = br.readLine();	
 					tab[i-1] = tmp.toCharArray();
@@ -68,9 +81,14 @@ public class Grid {
 			e.printStackTrace();
 
 		} 
+<<<<<<< HEAD
 
 		tabAuto = new char[9];
 		int str = 0;
+=======
+		
+	/*	int str = 0;
+>>>>>>> axel
 		
 		System.out.println("Choisissez votre jeu : \n1) Sudoku \n2) Wordoku");
 		str = sc.nextInt();
@@ -97,7 +115,7 @@ public class Grid {
 			default:
 				System.out.println("Veuillez entre une valeur entre 1 et 4");
 			}
-		} while (str <0 && str > 4);
+		} while (str < 0 || str >= 4);
 		}
 		else {
 			do {
@@ -118,9 +136,9 @@ public class Grid {
 					grilleSudoku = new File("GrilleSudoku/grilleL_expert.dat");
 					break;
 				default:
-					System.out.println("Veuillez entre une valeur entre 1 et 4");
+					System.out.println("Veuillez entre une valeur entre 1 et 4 :");
 				}
-			} while (str <0 && str > 4);
+			} while (str < 0 || str >= 4);
 		}
 		
 		if(str > 0 && str <= 4) {
@@ -142,13 +160,16 @@ public class Grid {
 			} catch (IOException e) {
 				e.printStackTrace();
 			} 
-		}
+		}*/
 	}
 
 	public char[] getTabAuto() {
 		return tabAuto;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> axel
 
 	public void setTabAuto(char[] tabAuto) {
 		this.tabAuto = tabAuto;

@@ -1,25 +1,54 @@
 package games;
 
-<<<<<<< HEAD
 import display.Grid;
-=======
+
+import java.io.File;
 import java.util.Arrays;
 import java.util.Scanner;
 
 import display.*;
->>>>>>> axel
 
 public class Sudoku {
 	
 	Grid grille;
 	Scanner sc = new Scanner(System.in);
-	char[] tab1D = new char[81];
+	char[] tab1D = new char[9];
+	File grilleSudoku;
 	
 	
 	public Sudoku() {
-		this.grille = new Grid(10,9);
+		selectGrid();
+		this.grille = new Grid(10,9,grilleSudoku);
 	}
 	
+	public void selectGrid() {
+		int str = 0;
+
+		System.out.println("Choisissez votre difficulte : \n1) Facile \n2) Moyen \n3) Difficile \n4) Expert");
+
+		do {
+
+			str = sc.nextInt();
+
+			switch(str) {
+			case 1 :
+				grilleSudoku = new File("GrilleSudoku/grille_facile.dat");
+				break;
+			case 2 : 
+				grilleSudoku = new File("GrilleSudoku/grille_moyen.dat");
+				break;
+			case 3 :
+				grilleSudoku = new File("GrilleSudoku/grille_difficile.dat");
+				break;
+			case 4 :
+				grilleSudoku = new File("GrilleSudoku/grille_expert.dat");
+				break;
+			default:
+				System.out.println("Veuillez entre une valeur entre 1 et 4");
+			}
+		} while (str < 0 || str >= 4);
+	}
+
 	public boolean grilleRemplie() {
 		for(int i = 0; i < grille.getTab().length ; i++) {
 			for(int j = 0 ; j < grille.getTab().length ; j++) {
@@ -73,7 +102,7 @@ public class Sudoku {
 			if(estAutorise(val)) {
 				char tmp = grille.getTab()[l][c];
 				grille.getTab()[l][c] = val;
-				if((l < 0 && l >= 9) || (c < 0 && c >= 9) || Character.compare(tmp,'0') != 0 || !verifieLigne()) {
+				if((l < 0 && l >= 9) || (c < 0 && c >= 9) || Character.compare(tmp,'0') != 0 || !verifieUnicite()) {
 					System.out.println("Coup incorrect");
 					grille.getTab()[l][c] = tmp;
 				}
@@ -121,36 +150,39 @@ public class Sudoku {
 		return true;
 	}
 	
-	public void tab2DTo1D() {
+	public char[] tab2DTo1D(int x, int y) {
 		int pos = 0;
-		for(int i = 0 ; i < 3 ; i++) {
-			for(int j = 0 ; j < 3 ; j++) {
+		for(int i = x; i < x+3 ; i++) {
+			for(int j = y ; j < y+3 ; j++) {
 				this.tab1D[pos] = this.grille.getTab()[i][j];
 				pos++;
 			}
 		}
+		return tab1D;
 	}
 
 	public boolean verifieRegion() {
-		/*int cpt = 0;
+		int cpt = 0;
 		for(char tmp : this.grille.getTabAuto()) {
 			cpt = 0;
-			for(int k = 0 ; k < 9 ; k++) {
-				if(Character.compare(tmp, this.tab1D[k]) == 0 && cpt < 2) {
-					cpt++;
-				}
-				else if(cpt == 2) {
-					System.out.println("Valeur deja presente dans la region");
-					return false;
+			for(int i = 0 ; i < 9 ; i = i+3) {
+				for(int j = 0 ; j < 9 ; j = j+3) {
+					cpt = 0;
+					char[] tmp2 = tab2DTo1D(i, j);
+					for(int k = 0; k < tmp2.length ; k++) {
+						if(Character.compare(tmp, tmp2[k]) == 0 && cpt < 2) {
+							cpt++;
+						}
+						else if(cpt == 2) {
+							System.out.println("Valeur deja presente dans la region");
+							return false;
+						}
+					}
 				}
 			}
 		}
-		System.out.println("TU ME PETE LES COUILLES SUDOKU DE MERDE");
-		return true;*/
-		System.out.println("ALLO");
-		return false;
+		return true;
 	}
-
 	
 	public boolean verifieUnicite() {
 		if(verifieLigne() && verifieColonne() && verifieRegion()) {

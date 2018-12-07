@@ -6,24 +6,20 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-<<<<<<< HEAD
+
 import java.util.Arrays;
-=======
+
 import java.util.Scanner;
->>>>>>> axel
+
 
 
 public class Grid {
 
-<<<<<<< HEAD
 	char[][] tab;
 	File file;
-	File test = new File("GrilleSudoku/grille09x09_00.dat");
-=======
-	static File grilleSudoku;
-	char[][] tab;
+	//File test = new File("GrilleSudoku/grille09x09_00.dat");
+	//static File grilleSudoku;
 	char[] tabAuto;
->>>>>>> axel
 	int x,y;
 	Scanner sc = new Scanner(System.in);
 	
@@ -38,16 +34,17 @@ public class Grid {
 	
 	public Grid(int x, int y, File f) { //Constructeur de la grille avec fichier
 
+		tabAuto = new char[9];
 		this.x = x;
 		this.y = y;
 		tab = new char[this.x-1][this.y];
-<<<<<<< HEAD
 		try {
 			FileInputStream fis= new FileInputStream(f);
 			InputStreamReader isr=new InputStreamReader(fis);
 			BufferedReader br=new BufferedReader(isr);
 			String tmp;
 			tmp = br.readLine();	
+			tabAuto = tmp.toCharArray();
 				for(int i=1 ; i < this.x ; i++) {
 					tmp = br.readLine();	
 					tab[i-1] = tmp.toCharArray();
@@ -61,9 +58,8 @@ public class Grid {
 			e.printStackTrace();
 
 		} 
-=======
-		tabAuto = new char[9];
-		int str = 0;
+		
+	/*	int str = 0;
 		
 		System.out.println("Choisissez votre jeu : \n1) Sudoku \n2) Wordoku");
 		str = sc.nextInt();
@@ -135,13 +131,12 @@ public class Grid {
 			} catch (IOException e) {
 				e.printStackTrace();
 			} 
-		}
+		}*/
 	}
 
 	public char[] getTabAuto() {
 		return tabAuto;
 	}
->>>>>>> axel
 
 	public void setTabAuto(char[] tabAuto) {
 		this.tabAuto = tabAuto;

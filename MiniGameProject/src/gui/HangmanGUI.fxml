@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #bb0000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HangmanController">
+   <bottom>
+      <AnchorPane prefHeight="60.0" prefWidth="800.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="quit" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#backToMenu" style="-fx-background-color: black;" text="Retour au menu" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </bottom>
+   <left>
+      <AnchorPane prefHeight="540.0" prefWidth="341.0" style="-fx-background-color: FFFF8F;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="theman" fitHeight="231.0" fitWidth="262.0" layoutX="54.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Pendu/Pendu0.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="28.0" layoutY="37.0" prefHeight="56.0" prefWidth="305.0" text="WANTED">
+               <font>
+                  <Font name="Detente Regular" size="62.0" />
+               </font>
+            </Label>
+            <Label layoutX="123.0" layoutY="392.0" text="PRIME">
+               <font>
+                  <Font name="Detente Regular" size="34.0" />
+               </font>
+            </Label>
+            <Label layoutX="149.0" layoutY="437.0" text="0$" textFill="RED">
+               <font>
+                  <Font name="Detente Regular" size="54.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="540.0" prefWidth="463.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="word" alignment="CENTER" layoutX="23.0" layoutY="93.0" prefHeight="131.0" prefWidth="414.0" style="-fx-background-color: antiquewhite;" text="LE MOT">
+               <font>
+                  <Font name="Detente Regular" size="57.0" />
+               </font>
+            </Label>
+            <AnchorPane layoutX="21.0" layoutY="270.0" prefHeight="200.0" prefWidth="419.0">
+               <children>
+                  <AnchorPane prefHeight="51.0" prefWidth="417.0">
+                     <children>
+                        <Button layoutX="22.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="A">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="61.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="B">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="97.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="C">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="134.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="D">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="173.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="E">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="208.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="F">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="243.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="G">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="281.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="H">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="320.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="I">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="351.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="J">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutY="51.0" prefHeight="51.0" prefWidth="417.0">
+                     <children>
+                        <Button layoutX="22.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="K">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="61.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="L">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="96.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="M">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="132.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="N">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="170.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="O">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="284.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="R">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="321.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="S">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="355.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="T">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="209.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="P">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                        <Button layoutX="245.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="Q">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font></Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="1.0" layoutY="100.0" prefHeight="51.0" prefWidth="417.0" style="-fx-background-image: url('../../Pendu/wanted.jpg');">
+                     <children>
+                        <Button layoutX="22.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="U">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="59.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="V">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="97.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="W">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="141.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="X">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="179.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="Y">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="216.0" layoutY="10.0" mnemonicParsing="false" onAction="#clickLetter" text="Z">
+                           <font>
+                              <Font name="Detente Regular" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

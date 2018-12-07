@@ -13,21 +13,21 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DisController">
-   <center>
-      <FlowPane alignment="CENTER" hgap="20.0" prefHeight="200.0" prefWidth="200.0" vgap="20.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="SUDOKU" />
-            <Button fx:id="hangman" mnemonicParsing="false" onAction="#startHangman" prefHeight="100.0" prefWidth="120.0" text="PENDU" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="MOTUS" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="MOTS MELES" />
-            <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="WORDOKU" textAlignment="CENTER" wrapText="true" />
-         </children>
-         <BorderPane.margin>
-            <Insets top="100.0" />
-         </BorderPane.margin>
-      </FlowPane>
-   </center>
    <effect>
       <Blend />
    </effect>
+   <bottom>
+      <AnchorPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="175.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="WORDOKU" textAlignment="CENTER" wrapText="true" />
+            <Button layoutX="340.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="SUDOKU" />
+            <Button fx:id="hangman" layoutX="499.0" layoutY="14.0" mnemonicParsing="false" onAction="#startHangman" prefHeight="100.0" prefWidth="120.0" text="PENDU" />
+            <Button fx:id="motus" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#startMotus" prefHeight="100.0" prefWidth="120.0" text="MOTUS" />
+            <Button layoutX="653.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="MOTS MELES" />
+         </children>
+      </Pane>
+   </center>
 </BorderPane>

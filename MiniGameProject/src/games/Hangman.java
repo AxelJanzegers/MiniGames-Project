@@ -18,12 +18,13 @@ public class Hangman {
 	
 	
 	public Hangman() {
-		this.word = Library.GiveWord();		
+		this.word = Library.GiveWordofXLetters(7);		
 		Tword = new char[this.word.length()];
 		answer = new char[this.word.length()];
 		
 		word.getChars(0, word.length(), Tword, 0);
-		for(int i=0; i<word.length();i++) answer[i] = '-';
+		answer[0]=Tword[0];
+		for(int i=1; i<word.length();i++) answer[i] = '-';
 		fails = 0;
 	}
 	
@@ -44,18 +45,15 @@ public class Hangman {
 	 */
 	public void verif(char l) {
 		int presence = 0; //variable qui signalisera la présence de la lettre entrée, passe à 1 si la lettre est trouvée, envoie le prog error si la var reste à 0
-		int i=0;
-		int alreadythere=0;
-		while(i<Tword.length && alreadythere==0) {
-			if (l == answer[i]) { 
-				System.out.println("Cette lettre a déjà été entrée."); 
-				alreadythere++;
-			}
-			else { 
+		int i=1;
+		
+		while(i<Tword.length) {
+			
+			
 				if (l == Tword[i]) {
 				answer[i]=Tword[i];
 				presence=1;
-				}
+				
 			}
 			i++;
 		}
@@ -63,6 +61,12 @@ public class Hangman {
 	}
 	
 	
+	
+
+	public void setWord(String word) {
+		this.word = word;
+	}
+
 	public void error() {
 		if(fails==0 && (Arrays.equals(Tword,answer))) {
 			System.out.println(" Bravo vous avez le meilleur score , vous avez 100/100 !");
@@ -70,7 +74,7 @@ public class Hangman {
 		else {
 		fails++;
 		score = score -5;
-		if(fails==10) {
+		if(fails==8) {
 			System.out.println("Partie terminée. Le mot était "+ word);
 			System.out.println("Score : 0 ");
 		}
@@ -97,6 +101,20 @@ public class Hangman {
 			if(Arrays.equals(Tword, answer)) System.out.println("Félicitations ! Le mot était en effet : "+ word);
 		}
 		sc.close();
+	}
+
+	public String getWord() {
+		// TODO Auto-generated method stub
+		return word;
+	}
+	
+	public String getAnswer() {
+		String Sanswer = new String(answer);
+		return Sanswer;
+	}
+
+	public int getFails() {
+		return fails;
 	}
 }
 

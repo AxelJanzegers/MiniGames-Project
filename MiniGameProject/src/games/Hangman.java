@@ -7,14 +7,13 @@ import display.Library;
 
 public class Hangman {
 	
-
-	int score = 45;
 	private String word; //mot provenant de la bibliothèque
 	private char[] Tword; //tableau où est stocké word
 	private char[] answer; //Tableau avec les lettres entrées par l'utilisateur
 	private int fails; //nombre d'erreurs
 	private char l; //lettre entrée par l'utilisateur
 	public Scanner sc = new Scanner(System.in);
+	Score score = new Score();
 	
 	
 	public Hangman() {
@@ -53,13 +52,19 @@ public class Hangman {
 				if (l == Tword[i]) {
 				answer[i]=Tword[i];
 				presence=1;
-				
+
+				score.GoodAnswer(100);
+				}
+
 			}
+		if(presence==0) {
+			error();
+			score.BadAnswer();
+		}
 			i++;
 		}
-		if(presence==0) error();
-	}
-	
+		
+
 	
 	
 
@@ -68,31 +73,15 @@ public class Hangman {
 	}
 
 	public void error() {
-		if(fails==0 && (Arrays.equals(Tword,answer))) {
-			System.out.println(" Bravo vous avez le meilleur score , vous avez 100/100 !");
-		}
-		else {
 		fails++;
-		score = score -5;
+
 		if(fails==8) {
 			System.out.println("Partie terminée. Le mot était "+ word);
 			System.out.println("Score : 0 ");
 		}
-		}
 	}
 	
 	public void startGame() {
-		System.out.println("Mot trouvé sans erreurs : 100 pts \n"
-				+ "Mot trouvé avec 1 erreur : 45 pts \n"
-				+ "Mot trouvé avec 2 erreurs : 40 pts \n"
-				+ "Mot trouvé avec 3 erreurs : 35 pts \n"
-				+ "Mot trouvé avec 4 erreurs : 30 pts \n"
-				+ "Mot trouvé avec 5 erreurs : 25 pts \n"
-				+ "Mot trouvé avec 6 erreurs : 20 pts \n"
-				+ "Mot trouvé avec 7 erreurs : 15 pts \n"
-				+ "Mot trouvé avec 8 erreurs : 10 pts \n"
-				+ "Mot trouvé avec 9 erreurs : 5 pts \n");
-		
 		while (!(Arrays.equals(Tword, answer)) && fails<10 && l!='0') {
 			System.out.println(answer);
 			System.out.println(word);

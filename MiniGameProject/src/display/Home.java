@@ -7,6 +7,7 @@ import games.WordSearchPuzzle;
 import java.io.File;
 import java.util.Arrays;
 
+
 import gui.*;
 
 import javafx.application.Application;
@@ -27,9 +28,6 @@ public class Home extends Application {
 	public static void main(String[] args) {
 		
 		Application.launch(args);
-		WordSearchPuzzle w = new WordSearchPuzzle();
-		//Hangman h = new Hangman();
-		//w.startGame();
 		
 		
 	}
@@ -40,6 +38,7 @@ public class Home extends Application {
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+
 		// TODO Auto-generated method stub
         primaryStage.setTitle("Des Chiffres et Des Lettres");
         Parent root = FXMLLoader.load(getClass().getResource("../gui/Dis.fxml"));
@@ -48,6 +47,7 @@ public class Home extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 		
+
 	}
 
 

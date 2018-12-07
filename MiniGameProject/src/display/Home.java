@@ -1,22 +1,11 @@
 package display;
 
-import games.Hangman;
-import games.Motus;
-import games.WordSearchPuzzle;
-<<<<<<< HEAD
-
-import java.io.File;
-import java.util.Arrays;
 
 
-import gui.*;
-
-=======
 import java.io.File;
 import java.util.Arrays;
 
 import games.*;
->>>>>>> axel
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,7 +22,6 @@ public class Home extends Application {
 
 	
 	public static void main(String[] args) {
-<<<<<<< HEAD
 		
 		Application.launch(args);
 		
@@ -57,29 +45,6 @@ public class Home extends Application {
 		
 
 	}
-
-
-
-	
-=======
-
-		
-	
-
-		// Hangman h = new Hangman();
-		// h.startGame();
-
-		Sudoku s = new Sudoku();
-		s.afficherGrille();
-		s.jouerUnCoup();
-	}
-
-	@Override
-	public void start(Stage arg0) throws Exception {
-		// TODO Auto-generated method stub
-		
-	} 
->>>>>>> axel
 
 
 }

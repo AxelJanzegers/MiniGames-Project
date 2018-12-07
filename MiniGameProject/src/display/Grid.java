@@ -15,22 +15,12 @@ import java.util.Scanner;
 
 public class Grid {
 
-<<<<<<< HEAD
-
-	char[][] tab;
-	File file;
-	File test = new File("GrilleSudoku/grille09x09_00.dat");
-
-	static File grilleSudoku;
-	char[] tabAuto;
-
-=======
 	char[][] tab;
 	File file;
 	//File test = new File("GrilleSudoku/grille09x09_00.dat");
 	//static File grilleSudoku;
 	char[] tabAuto;
->>>>>>> axel
+
 	int x,y;
 
 	Scanner sc = new Scanner(System.in);
@@ -56,11 +46,7 @@ public class Grid {
 		tabAuto = new char[9];
 		this.x = x;
 		this.y = y;
-		tab = new char[this.x-1][this.y];
-<<<<<<< HEAD
-
-=======
->>>>>>> axel
+		
 		try {
 			FileInputStream fis= new FileInputStream(f);
 			InputStreamReader isr=new InputStreamReader(fis);
@@ -81,11 +67,10 @@ public class Grid {
 			e.printStackTrace();
 
 		} 
-<<<<<<< HEAD
+ 
 
 		tabAuto = new char[9];
 		int str = 0;
-=======
 		
 	/*	int str = 0;
 >>>>>>> axel
@@ -166,11 +151,7 @@ public class Grid {
 	public char[] getTabAuto() {
 		return tabAuto;
 	}
-<<<<<<< HEAD
-
-=======
->>>>>>> axel
-
+	
 	public void setTabAuto(char[] tabAuto) {
 		this.tabAuto = tabAuto;
 	}

@@ -23,10 +23,10 @@
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button layoutX="175.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="WORDOKU" textAlignment="CENTER" wrapText="true" />
-            <Button layoutX="340.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="SUDOKU" />
+            <Button fx:id="sudoku" layoutX="340.0" layoutY="14.0" mnemonicParsing="false" onAction="#startSudoku" prefHeight="100.0" prefWidth="120.0" text="SUDOKU" />
             <Button fx:id="hangman" layoutX="499.0" layoutY="14.0" mnemonicParsing="false" onAction="#startHangman" prefHeight="100.0" prefWidth="120.0" text="PENDU" />
             <Button fx:id="motus" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#startMotus" prefHeight="100.0" prefWidth="120.0" text="MOTUS" />
-            <Button layoutX="653.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="MOTS MELES" />
+            <Button fx:id="wsp" layoutX="653.0" layoutY="14.0" mnemonicParsing="false" onAction="#startWSP" prefHeight="100.0" prefWidth="120.0" text="MOTS MELES" />
          </children>
       </Pane>
    </center>

@@ -50,6 +50,23 @@ public class DisController implements Initializable {
 		playwindow.setScene(scene);
 	}
 	
+	@FXML
+	public void startWSP(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("wspgui.fxml"));
+		Scene scene = new Scene(root);
+		Stage playwindow = (Stage) (((Node) event.getSource()).getScene().getWindow());
+		playwindow.setScene(scene);
+	}
+	
+	@FXML
+	public void startSudoku(ActionEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("sudokugui.fxml"));
+		Scene scene = new Scene(root);
+		Stage playwindow = (Stage) (((Node) event.getSource()).getScene().getWindow());
+		playwindow.setScene(scene);
+	}
+	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

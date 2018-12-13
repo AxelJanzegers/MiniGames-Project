@@ -83,6 +83,7 @@ public class Grid {
 		} 
 <<<<<<< HEAD
 
+<<<<<<< HEAD
 		tabAuto = new char[9];
 		int str = 0;
 =======
@@ -161,6 +162,8 @@ public class Grid {
 				e.printStackTrace();
 			} 
 		}*/
+=======
+>>>>>>> arthur
 	}
 
 	public char[] getTabAuto() {
@@ -175,6 +178,22 @@ public class Grid {
 		this.tabAuto = tabAuto;
 	}
 	
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
 	/*
 	 * Renvoie un indice pour une lettre donnée
 	 */
@@ -187,6 +206,13 @@ public class Grid {
 		return 0;
 	}
 
+	/*
+	 * 
+	 */
+	public char getLetterAtIndex(int x, int y) {
+		return tab[x][y];		
+	}
+	
 	/*
 	 * GETTER SETTER
 	 */

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javax.imageio.ImageIO;
 
 import games.Hangman;
 import javafx.event.ActionEvent;
@@ -85,6 +84,7 @@ public class HangmanController implements Initializable {
 		h.verif(l);//On appelle les vérifications du pendu
 		word.setText(h.getAnswer());
 		if(h.getFails()<=7) theman.setImage(getImage(h.getFails()));
+		score.setText(String.valueOf(h.getScore())+"$");;
 	
 	}
 

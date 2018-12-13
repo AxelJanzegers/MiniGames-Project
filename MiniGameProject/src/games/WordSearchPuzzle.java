@@ -12,8 +12,8 @@ import display.Grid;
 
 public class WordSearchPuzzle {
 	
-	private Grid g;
-	private File f;
+	private Grid g; //Grille des mots meles
+	private File f; //Fichier contenant la grille
 	public Scanner sc = new Scanner(System.in);
 	private String[] words;
 	private String answer;
@@ -21,7 +21,12 @@ public class WordSearchPuzzle {
 	private char[] Tend;
 	
 	
-	public WordSearchPuzzle() {}
+	public WordSearchPuzzle(File f) {
+		this.f=f;
+		g = new Grid(11,10,f);
+		setWords();
+		
+	}
 	
 	
 	/*
@@ -52,6 +57,26 @@ public class WordSearchPuzzle {
 	 * Initialise les mots à trouver
 	 */
 	
+	public String[] getWords() {
+		return words;
+	}
+
+
+	public void setWords(String[] words) {
+		this.words = words;
+	}
+
+
+	public Grid getG() {
+		return g;
+	}
+
+
+	public void setG(Grid g) {
+		this.g = g;
+	}
+
+
 	public void setWords() { 
 		try{
 			FileInputStream fis= new FileInputStream(f);

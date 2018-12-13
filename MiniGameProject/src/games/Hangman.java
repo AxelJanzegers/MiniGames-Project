@@ -4,9 +4,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import display.Library;
+import display.Score;
 
 public class Hangman {
 	
+
 	private String word; //mot provenant de la bibliothèque
 	private char[] Tword; //tableau où est stocké word
 	private char[] answer; //Tableau avec les lettres entrées par l'utilisateur
@@ -52,19 +54,17 @@ public class Hangman {
 				if (l == Tword[i]) {
 				answer[i]=Tword[i];
 				presence=1;
-
 				score.GoodAnswer(100);
-				}
-
+				
 			}
-		if(presence==0) {
-			error();
-			score.BadAnswer();
-		}
 			i++;
 		}
-		
-
+		if(presence==0) {
+			error();
+			
+		}
+	}
+	
 	
 	
 
@@ -73,15 +73,23 @@ public class Hangman {
 	}
 
 	public void error() {
+		if(fails==0 && (Arrays.equals(Tword,answer))) {
+			System.out.println(" Bravo vous avez le meilleur score , vous avez 100/100 !");
+		}
+		else {
 		fails++;
-
+		score.BadAnswer();
 		if(fails==8) {
+			
 			System.out.println("Partie terminée. Le mot était "+ word);
 			System.out.println("Score : 0 ");
+		}
 		}
 	}
 	
 	public void startGame() {
+		
+		
 		while (!(Arrays.equals(Tword, answer)) && fails<10 && l!='0') {
 			System.out.println(answer);
 			System.out.println(word);
@@ -105,5 +113,8 @@ public class Hangman {
 	public int getFails() {
 		return fails;
 	}
+	
+	public int getScore() {
+		return score.getScore();
+	}
 }
-

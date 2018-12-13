@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import display.Library;
-
+import display.Score;
 
 public class Motus {
 	
@@ -13,6 +13,7 @@ public class Motus {
 	char[] Tword;  //Tableau qui détient le mot recherché , n'est jamais affiché
 	char[] answer; //Tableau vide au départ affichant petit a petit la réponse
 	char[] Twordsc;
+	int[] Tdis; //Tableau qui servira à l'affichage(0:mauvaise réponse, 1:mal placée, 2:bien placée)
 	int tries; //nombre d'essais
 	String wordsc;
 	Scanner sc = new Scanner(System.in);
@@ -23,8 +24,12 @@ public class Motus {
 		this.word = Library.GiveWordofXLetters(6);		
 		Tword = new char[this.word.length()];
 		answer = new char[this.word.length()];	
+		Tdis = new int[this.word.length()];
 		word.getChars(0, word.length(), Tword, 0);
-		for(int i=0; i<word.length();i++) answer[i] = '-';
+		answer[0]=Tword[0];
+		answer[3]=Tword[3];
+		for(int i=1; i<3;i++) answer[i] = '.';
+		for(int i=4; i<word.length();i++) answer[i] = '.';
 		tries = 0;
 	}
 	
@@ -42,15 +47,18 @@ public class Motus {
 	}
 	
 	public void verif() {
+		for(int k : Tdis) {
+			Tdis[k]=0;
+		}
 		int i=0;
 		int j=0;
 		int ilenfautun = 0;
 		if(answer.length == Twordsc.length) {
 			while(i<Tword.length) {
-				if(Twordsc[i] == answer[i]) score.BadAnswer();
-				else {
+				
 					if(Tword[i] == Twordsc[i]) {
 						answer[i]=Tword[i];
+						Tdis[i]=2;
 						score.GoodAnswer(100);
 						ilenfautun++;
 						
@@ -58,10 +66,11 @@ public class Motus {
 					else for(j=0;j<Tword.length;j++)
 						if(Twordsc[i] == Tword[j]) {
 							System.out.println("la lettre "+Twordsc[i]+ " a la postion " + (i+1) + " n'est pas a la bonne place ");
+							Tdis[i]=1;
 							score.GoodAnswer(50);
 						}
-				}
-					
+				
+				
 				i++;
 			}
 			MaxTriesNormal();
@@ -115,6 +124,18 @@ public class Motus {
 				System.out.println("Pas mal pour un amateur !");
 			}
 		sc.close();
+	}
+	
+	public void setWordSC(char[] cx) {
+		Twordsc=cx;
+	}
+	
+	public char getLetterAtIndex(int i) {
+		return answer[i];		
+	}
+
+	public int[] getTdis() {
+		return Tdis;
 	}
 	
 }

@@ -84,18 +84,14 @@ public class Hangman {
 		
 	}
 	
-	public void startGame() {
-		
-		
-		while (!(Arrays.equals(Tword, answer)) && fails<10 && l!='0') {
-			System.out.println(answer);
-			System.out.println(word);
-			System.out.println("Erreurs restantes : "+(10-fails));
-			enterLetter();
-			if(Arrays.equals(Tword, answer)) System.out.println("Félicitations ! Le mot était en effet : "+ word);
+	
+	public boolean gameFinished() {
+		if(Arrays.equals(Tword, answer)){
+			return true;
 		}
-		sc.close();
+		else return false;
 	}
+
 
 	public String getWord() {
 		// TODO Auto-generated method stub

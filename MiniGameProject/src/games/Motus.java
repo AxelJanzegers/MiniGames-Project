@@ -145,6 +145,10 @@ public class Motus {
 	
 	public int getScore() {return score.getScore();}
 	
+	public String getWord() {
+		return word;
+	}
+
 	public Boolean win() {
 		if (Arrays.equals(Twordsc, answer)) return true;
 		else return false;

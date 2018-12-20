@@ -220,6 +220,14 @@ public class WordokuController implements Initializable{
 			Lselected.setStyle("-fx-border-color:black;-fx-background-color : white;-fx-font-size: 35;");
 			score.setText("Score : "+s.getScore());
 			cancel.setOpacity(0);
+			if(s.fullGrid()) {
+				try {
+					gameFinished(event);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		
 	}
@@ -249,6 +257,26 @@ public class WordokuController implements Initializable{
 			Lselected.setStyle("-fx-border-color:black;-fx-background-color : white;-fx-font-size: 35;");
 		}
 	}
+	
+	/*
+	 * Fonction de fin de jeu (partie gagnée)
+	 */
+	@FXML
+	public void gameFinished(ActionEvent event) throws IOException {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Félicitations !");
+		alert.setHeaderText("La grille est remplie !");
+		alert.setContentText("Votre score est de "+s.getScore()); //Message de félicitations et score
+
+		Optional<ButtonType> b = alert.showAndWait();
+		if (b.get()==ButtonType.OK || b.get()==ButtonType.CANCEL || b.get()==ButtonType.CLOSE) {
+			Parent root = FXMLLoader.load(getClass().getResource("dis.fxml"));
+			Scene scene = new Scene(root);
+			Stage playwindow = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			playwindow.setScene(scene);
+		}
+	}
+	
 	/*
 	 * Fonction de retour au menu principal
 	 */

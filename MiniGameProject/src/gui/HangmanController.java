@@ -87,6 +87,45 @@ public class HangmanController implements Initializable {
 	}
 	
 	/*
+	 * Fonction de fin de jeu (partie gagnée)
+	 */
+	@FXML
+	public void gameFinished(ActionEvent event) throws IOException {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Félicitations");
+		alert.setHeaderText("Le mot a été trouvé !");
+		alert.setContentText("Votre score est de "+h.getScore()); //Message de félicitations et score
+
+		Optional<ButtonType> b = alert.showAndWait();
+		if (b.get()==ButtonType.OK || b.get()==ButtonType.CANCEL || b.get()==ButtonType.CLOSE) {
+			Parent root = FXMLLoader.load(getClass().getResource("dis.fxml"));
+			Scene scene = new Scene(root);
+			Stage playwindow = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			playwindow.setScene(scene);
+		}
+	}
+	
+	/*
+	 * Fonction de fin de jeu (partie perdue)
+	 */
+	@FXML
+	public void gameFailed(ActionEvent event) throws IOException {
+		
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Perdu...");
+		alert.setHeaderText("Le mot était "+h.getWord()); //On affiche la réponse
+		alert.setContentText("Votre score est de "+h.getScore()); //et le score
+
+		Optional<ButtonType> b = alert.showAndWait();
+		if (b.get()==ButtonType.OK || b.get()==ButtonType.CANCEL || b.get()==ButtonType.CLOSE) {
+			Parent root = FXMLLoader.load(getClass().getResource("dis.fxml"));
+			Scene scene = new Scene(root);
+			Stage playwindow = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			playwindow.setScene(scene);
+		}
+	}
+	
+	/*
 	 * Cliquer sur une lettre
 	 */
 	@FXML
@@ -98,7 +137,24 @@ public class HangmanController implements Initializable {
 		h.verif(l);//On appelle les vérifications du pendu
 		word.setText(h.getAnswer());
 		if(h.getFails()<=7) theman.setImage(getImage(h.getFails()));
-		score.setText(String.valueOf(h.getScore())+"$");;
+		if(h.getFails()==7) {
+			try {
+				this.gameFailed(event);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		score.setText(String.valueOf(h.getScore())+"$");;//On actualise le score
+		if(h.gameFinished()) {
+			try {
+				this.gameFinished(event);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 	
 	}
 

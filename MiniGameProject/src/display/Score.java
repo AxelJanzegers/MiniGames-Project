@@ -4,16 +4,12 @@ import games.Motus;
 
 public class Score {
 	
-	int combo;
-	int score;
-	String name;
+	private int combo;
+	private int score;
+	private String name;
 	
 	public Score() {
 		this.combo=1;
-		this.score=0;
-	}
-	
-	public Score(Motus m) {
 		this.score=0;
 	}
 	
@@ -23,12 +19,16 @@ public class Score {
         this.name=string;
 
     }
-	
+	/*
+	 * Bonne réponse
+	 */
 	public void GoodAnswer(int x) {
 		this.score += x*this.combo;
 		this.combo++;
 	}
-	
+	/*
+	 * Bonne réponse (motus)
+	 */
 	public void GoodAnswer(int x, int tries) {
 		this.score += x*tries;
 	}

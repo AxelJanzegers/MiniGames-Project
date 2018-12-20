@@ -16,44 +16,19 @@ public class WordSearchPuzzle {
 	private Grid g; //Grille des mots meles
 	private File f; //Fichier contenant la grille
 	public Scanner sc = new Scanner(System.in);
-	private String[] words;
-	private String answer;
-	private int[] beg = new int[2];
-	private int[] end = new int[2];
+	private String[] words; //tableau des mots à trouver
+	private String answer; //mot entré par l'user
+	private int[] beg = new int[2]; //coordonnées de la 1ère lettre du mot entré
+	private int[] end = new int[2]; //coordonnées de la dernière lettre du mot entré
 	private Score score = new Score();
 
 
 	public WordSearchPuzzle(File f) {
 		this.f=f;
 		g = new Grid(14,13,f);
-		setWords();
+		setWords(); //Liste des mots à trouver
 
 	}
-
-
-	/*
-	 * Selection de la grille
-	 */
-	public void selectGrid() { 
-		System.out.println("Choisissez la grille 1, 2 ou 3");
-		int choix =sc.nextInt();
-		do {
-			switch(choix) {
-			case 1 :
-				f = new File("MotsMeles/Fruits.txt");
-				break;
-			case 2 : 
-				f = new File("MotsMeles/Legumes.txt");
-				break;
-			case 3 :
-				f = new File("MotsMeles/Noel.txt");
-				break;
-			default:
-				System.out.println("Choisissez la grille 1, 2 ou 3");
-			}
-		} while (choix <1 || choix >= 4);
-	}
-
 
 
 	/*
@@ -158,14 +133,6 @@ public class WordSearchPuzzle {
 
 	}
 
-	/*
-	 * Affiche les mots à trouver
-	 */
-	public void dispWords() {
-		for(int i=0; i<words.length;i++) {
-			System.out.print(words[i]+" ");
-		}
-	}
 
 
 	public String[] getWords() {

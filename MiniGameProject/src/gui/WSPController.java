@@ -47,9 +47,13 @@ public class WSPController implements Initializable {
 	private Label[] words;
 	@FXML
 	private GridPane pane;
-	
+	//Score
 	@FXML
 	private Label score;
+	
+	/*
+	 * Choix
+	 */
 	@FXML
 	private Button noel;
 	@FXML
@@ -82,6 +86,9 @@ public class WSPController implements Initializable {
 		
 	}
 	
+	/*
+	 * Choix de la grille
+	 */
 	@FXML
 	public void setFile(ActionEvent event) {
 		if(event.getSource().equals(noel)) {
@@ -93,6 +100,9 @@ public class WSPController implements Initializable {
 		initialize2();
 	}
 	
+	/*
+	 * Affichage
+	 */
 	public void initialize2() {
 		this.grid.setOpacity(1);
 		this.choicebox.setOpacity(0);
@@ -135,12 +145,14 @@ public class WSPController implements Initializable {
 	 */
 	public void setLabel(int i, int j) {
 		letters[i][j] = new Label(); 
-		letters[i][j].setText(Character.toString(g.getLetterAtIndex(i,j)));
-		
+		letters[i][j].setText(Character.toString(g.getLetterAtIndex(i,j))); //Remplissage avec la lettre
+		/*
+		 * Style
+		 */
 		letters[i][j].setStyle("-fx-background-color : lightyellow;");
 		letters[i][j].setPrefSize(40,40);
 		letters[i][j].setAlignment(Pos.CENTER);
-		letters[i][j].setId("Normal");
+		letters[i][j].setId("Normal"); 
 		
 		/*
 		 * Effets au survol d'une case
@@ -252,15 +264,50 @@ public class WSPController implements Initializable {
 				for(int i=0; i<words.length;i++) {
 					if(w.getAnswer().equals(words[i].getText())) {
 						words[i].setTextFill(Color.RED);
+						
+							
 					}
 				}
+				int count=0;
+				for(int i=0;i<words.length;i++) {
+					if(words[i].getTextFill().equals(Color.RED)) {
+						count++;
+					}
+				}
+				
 				score.setText(String.valueOf(w.getScore()));
+				if(count==words.length) {
+					try {
+						gameFinished(event);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 			}
 			
 			isLine=false;
 		}
 	}
 
+	/*
+	 * Fonction de fin de jeu (partie gagnée)
+	 */
+	@FXML
+	public void gameFinished(MouseEvent event) throws IOException {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Félicitations !");
+		alert.setHeaderText("Tous les mots ont été trouvés !");
+		alert.setContentText("Votre score est de "+w.getScore()); //Message de félicitations et score
+
+		Optional<ButtonType> b = alert.showAndWait();
+		if (b.get()==ButtonType.OK || b.get()==ButtonType.CANCEL || b.get()==ButtonType.CLOSE) {
+			Parent root = FXMLLoader.load(getClass().getResource("dis.fxml"));
+			Scene scene = new Scene(root);
+			Stage playwindow = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			playwindow.setScene(scene);
+		}
+	}
 
 	/*
 	 * Fonction de retour au menu principal

@@ -90,14 +90,14 @@ public class MotusController implements Initializable {
 				letters[x][y].setStyle("-fx-background-color:blue; -fx-font-size: 50; -fx-border-color:black");
 				x++;
 				if(x<6) setActual();
-				if(x==6) wordComplete();
+				if(x==6) wordComplete(event);
 			}
 		}
 
 	}
 
 
-	public void wordComplete() {
+	public void wordComplete(KeyEvent event) {
 		/*
 		 * Vérifications
 		 */
@@ -132,7 +132,12 @@ public class MotusController implements Initializable {
 
 
 		if(m.win()) {
-			System.out.println("Bien joué");
+			try {
+				this.gameFinished(event);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else {
 			/*
@@ -146,9 +151,58 @@ public class MotusController implements Initializable {
 				x=0;
 				setActual();
 			}
+			else {
+				try {
+					gameFailed(event);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
 		}
 
 	}
+	
+	/*
+	 * Fonction de fin de jeu (partie gagnée)
+	 */
+	@FXML
+	public void gameFinished(KeyEvent event) throws IOException {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Félicitations");
+		alert.setHeaderText("Le mot a été trouvé !");
+		alert.setContentText("Votre score est de "+m.getScore()); //Message de félicitations et score
+
+		Optional<ButtonType> b = alert.showAndWait();
+		if (b.get()==ButtonType.OK || b.get()==ButtonType.CANCEL || b.get()==ButtonType.CLOSE) {
+			Parent root = FXMLLoader.load(getClass().getResource("dis.fxml"));
+			Scene scene = new Scene(root);
+			Stage playwindow = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			playwindow.setScene(scene);
+		}
+	}
+	
+	/*
+	 * Fonction de fin de jeu (partie perdue)
+	 */
+	@FXML
+	public void gameFailed(KeyEvent event) throws IOException {
+		
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Perdu...");
+		alert.setHeaderText("Le mot était "+m.getWord()); //On affiche la réponse
+		alert.setContentText("Votre score est de "+m.getScore()); //et le score
+
+		Optional<ButtonType> b = alert.showAndWait();
+		if (b.get()==ButtonType.OK || b.get()==ButtonType.CANCEL || b.get()==ButtonType.CLOSE) {
+			Parent root = FXMLLoader.load(getClass().getResource("dis.fxml"));
+			Scene scene = new Scene(root);
+			Stage playwindow = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			playwindow.setScene(scene);
+		}
+	}
+	
 	/*
 	 * Fonction de retour au menu principal
 	 */

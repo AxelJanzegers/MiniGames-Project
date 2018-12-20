@@ -16,6 +16,9 @@ public abstract class Library {
 	static Random random = new Random();
 	static String word ="";
 	
+	/*
+	 * Envoie un mot aléatoire du fichier francais.dic
+	 */
 	public static String GiveWord() {
 		try {
 			FileInputStream fis= new FileInputStream(library);
@@ -42,7 +45,9 @@ public abstract class Library {
 		
 	}
 	
-	
+	/*
+	 * Appelle la fonction GiveWord jusqu'à trouver un mot du bon nombre de lettres
+	 */
 	public static String GiveWordofXLetters(int x) {
 		while(word.length()!=x) {
 			GiveWord();

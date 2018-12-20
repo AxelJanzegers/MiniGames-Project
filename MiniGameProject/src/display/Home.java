@@ -25,7 +25,6 @@ public class Home extends Application {
 		
 		Application.launch(args);
 		
-		
 	}
 
 	

@@ -9,54 +9,165 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import display.Grid;
+import display.Score;
 
 public class WordSearchPuzzle {
-	
+
 	private Grid g; //Grille des mots meles
 	private File f; //Fichier contenant la grille
 	public Scanner sc = new Scanner(System.in);
 	private String[] words;
 	private String answer;
-	private char[] Tbeg;
-	private char[] Tend;
-	
-	
+	private int[] beg = new int[2];
+	private int[] end = new int[2];
+	private Score score = new Score();
+
+
 	public WordSearchPuzzle(File f) {
 		this.f=f;
-		g = new Grid(11,10,f);
+		g = new Grid(14,13,f);
 		setWords();
-		
+
 	}
-	
-	
+
+
 	/*
 	 * Selection de la grille
 	 */
 	public void selectGrid() { 
 		System.out.println("Choisissez la grille 1, 2 ou 3");
 		int choix =sc.nextInt();
-				do {
-					switch(choix) {
-					case 1 :
-						f = new File("MotsMeles/Fruits.txt");
-						break;
-					case 2 : 
-						f = new File("MotsMeles/Fruits.txt");
-						break;
-					case 3 :
-						f = new File("MotsMeles/Fruits.txt");
-						break;
-					default:
-						System.out.println("Choisissez la grille 1, 2 ou 3");
-					}
-				} while (choix <1 || choix >= 4);
+		do {
+			switch(choix) {
+			case 1 :
+				f = new File("MotsMeles/Fruits.txt");
+				break;
+			case 2 : 
+				f = new File("MotsMeles/Legumes.txt");
+				break;
+			case 3 :
+				f = new File("MotsMeles/Noel.txt");
+				break;
+			default:
+				System.out.println("Choisissez la grille 1, 2 ou 3");
+			}
+		} while (choix <1 || choix >= 4);
+	}
+
+
+
+	/*
+	 * Entrée des coordonnées de la case du premier mot et du dernier
+	 */
+	public String submit() {
+		
+		/*
+		 * On créée un tableau Tanswer dans lequel on stockera le mot complet
+		 *  suivant les coordonnées beg et end
+		 */
+		char[] Tanswer=new char[0];
+		int j=0;
+		
+		if(beg[0]==end[0]) { //Si ils sont sur la même ligne
+			if(beg[1]<end[1]) { //Si end est après beg
+				Tanswer = new char[end[1]-beg[1]+1];
+				for(int i=beg[1];i<=end[1];i++) {
+					Tanswer[j]=g.getLetterAtIndex(i, beg[0]);
+					j++;
+				}
+			}
+			else { //Si beg est après end
+				Tanswer = new char[beg[1]-end[1]+1];
+				for(int i=end[1];i<=beg[1];i++) {
+					Tanswer[j]=g.getLetterAtIndex(i, beg[0]);
+					j++;
+				}
+			}
 		}
+		else { //Si ils sont sur la même colonne
+			if(beg[0]<end[0]) { //Si end est après beg
+				Tanswer = new char[end[0]-beg[0]+1];
+				for(int i=beg[0];i<=end[0];i++) {
+					Tanswer[j]=g.getLetterAtIndex(beg[1],i);
+					j++;
+				}
+			}
+			else { //Si beg est après end
+				Tanswer = new char[beg[0]-end[0]+1];
+				for(int i=end[0];i<=beg[0];i++) {
+					Tanswer[j]=g.getLetterAtIndex(end[1],i);
+					j++;
+				}
+			}
+			
+		}
+		//On stocke le contenu du tableau dans answer
+		answer=String.valueOf(Tanswer); 
+		return verif();
+	}
+
 	
+	/*
+	 * Vérifications
+	 */
+	public String verif() {
+		int j;
+		for(int i=0;i<words.length;i++) {
+			if(answer.equals(words[i]) || reverse(answer).equals(words[i])) {
+				score.GoodAnswer(1000);
+				for(j=i+1; j<words.length-1;j++) {
+					words[i]=words[j];
+				}
+				return answer;
+			}
+			
+		}
+		score.BadAnswer();
+		return "";
+	}
+
+
+	/*
+	 * Retourne la chaine de caractère à l'envers
+	 */
+	public String reverse(String s) {
+		String r = "";
+		for(int i=s.length()-1;i>=0;i--) {
+			r=r+s.charAt(i);
+		}
+		return r;
+	}
 	
 	/*
 	 * Initialise les mots à trouver
 	 */
-	
+	public void setWords() { 
+		try{
+			FileInputStream fis= new FileInputStream(f);
+			InputStreamReader isr=new InputStreamReader(fis);
+			BufferedReader br=new BufferedReader(isr);
+			String firstLine = br.readLine().toUpperCase();
+			words=firstLine.split("-");
+			br.close();
+		}
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+
+	}
+
+	/*
+	 * Affiche les mots à trouver
+	 */
+	public void dispWords() {
+		for(int i=0; i<words.length;i++) {
+			System.out.print(words[i]+" ");
+		}
+	}
+
+
 	public String[] getWords() {
 		return words;
 	}
@@ -77,64 +188,34 @@ public class WordSearchPuzzle {
 	}
 
 
-	public void setWords() { 
-		try{
-			FileInputStream fis= new FileInputStream(f);
-			InputStreamReader isr=new InputStreamReader(fis);
-			BufferedReader br=new BufferedReader(isr);
-			String firstLine = br.readLine().toUpperCase();
-			words=firstLine.split("-");
-			br.close();
-		}
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} 
-		
+	public int[] getBeg() {
+		return beg;
 	}
-	
-	/*
-	 * Affiche les mots à trouver
-	 */
-	public void dispWords() {
-		for(int i=0; i<words.length;i++) {
-			System.out.print(words[i]+" ");
-		}
+
+
+	public void setBeg(int x, int y) {
+		this.beg[0]=x;
+		this.beg[1]=y;
 	}
-	
-	
-	
-	/*
-	 * Obtient le mot défini par les coordonnées entrées par l'user
-	 */
-	public void makeWord(String beginning, String end) {
-		Tbeg=beginning.toCharArray();
-		Tend=end.toCharArray();
-		System.out.println(Tbeg[1]);
-		System.out.println(g.getTab()[g.letterToInt(Tbeg[0])][2]);
+
+
+	public int[] getEnd() {
+		return end;
 	}
-	
-	/*
-	 * DEMARRAGE DU JEU
-	 */
-	public void startGame() {
-		selectGrid();
-		g = new Grid(11,10,f);	
-		setWords();
-		
-		String beg, end; //Variables utilisées pour stocker les coordonnées de la première et dernière case d'un mot
-		g.displayGridWSP(); //Affichage de la grille
-		
-		System.out.println("\nMots à trouver : ");
-		dispWords();
-		
-		System.out.println("\nEntrez les coordonnées de la première lettre du mot à trouver (ex : A3, B2...) : ");
-		beg = sc.nextLine().toUpperCase();
-		System.out.println("\nEntrez les coordonnées de la dernière lettre du mot à trouver (ex : E3, B7...) : ");
-		end = sc.nextLine().toUpperCase();
-		makeWord(beg, end);
-		
+
+
+	public void setEnd(int x, int y) {
+		this.end[0]=x;
+		this.end[1]=y;
 	}
+
+
+	public String getAnswer() {
+		return answer;
+	}
+
 	
+	public int getScore() {
+		return score.getScore();
+	}
 }

@@ -45,7 +45,9 @@ public class Hangman {
 	 * Partie verifications
 	 */
 	public void verif(char l) {
-		int presence = 0; //variable qui signalisera la présence de la lettre entrée, passe à 1 si la lettre est trouvée, envoie le prog error si la var reste à 0
+		int presence = 0; //variable qui signalisera la présence de la lettre entrée, 
+						//passe à 1 si la lettre est trouvée, 
+						//envoie le prog error si la var reste à 0
 		int i=1;
 		
 		while(i<Tword.length) {
@@ -73,18 +75,13 @@ public class Hangman {
 	}
 
 	public void error() {
-		if(fails==0 && (Arrays.equals(Tword,answer))) {
-			System.out.println(" Bravo vous avez le meilleur score , vous avez 100/100 !");
-		}
-		else {
+		
 		fails++;
 		score.BadAnswer();
-		if(fails==8) {
-			
+		if(fails==8) {	
 			System.out.println("Partie terminée. Le mot était "+ word);
-			System.out.println("Score : 0 ");
 		}
-		}
+		
 	}
 	
 	public void startGame() {

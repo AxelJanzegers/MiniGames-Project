@@ -47,8 +47,8 @@ public class Motus {
 	}
 	
 	public void verif() {
-		for(int k : Tdis) {
-			Tdis[k]=0;
+		for(int i=0; i<Tdis.length;i++) {
+			Tdis[i]=0;
 		}
 		int i=0;
 		int j=0;
@@ -59,15 +59,16 @@ public class Motus {
 					if(Tword[i] == Twordsc[i]) {
 						answer[i]=Tword[i];
 						Tdis[i]=2;
-						score.GoodAnswer(100);
+						score.GoodAnswer(100, Tword.length-tries);
 						ilenfautun++;
 						
 				}
+					
 					else for(j=0;j<Tword.length;j++)
 						if(Twordsc[i] == Tword[j]) {
 							System.out.println("la lettre "+Twordsc[i]+ " a la postion " + (i+1) + " n'est pas a la bonne place ");
 							Tdis[i]=1;
-							score.GoodAnswer(50);
+							score.GoodAnswer(50, Tword.length-tries);
 						}
 				
 				
@@ -81,7 +82,11 @@ public class Motus {
 			MaxTriesNormal();
 			score.BadAnswer();
 		}
+		if(Arrays.equals(Tword, answer)) {
+			score.GoodAnswer(10000);
+		}
 		score.AfficheScore();
+		
 	}
 	
 	public void displayWord() {
@@ -136,6 +141,13 @@ public class Motus {
 
 	public int[] getTdis() {
 		return Tdis;
+	}
+	
+	public int getScore() {return score.getScore();}
+	
+	public Boolean win() {
+		if (Arrays.equals(Twordsc, answer)) return true;
+		else return false;
 	}
 	
 }

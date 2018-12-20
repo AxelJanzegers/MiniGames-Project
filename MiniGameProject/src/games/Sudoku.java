@@ -2,27 +2,33 @@ package games;
 
 
 import display.Grid;
+import display.Score;
 
 import java.io.File;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 
 
 public class Sudoku {
 	
-	Grid grille;
-	Scanner sc = new Scanner(System.in);
-	char[] tab1D = new char[9];
-	File grilleSudoku;
+	protected Grid g;
+	protected Scanner sc = new Scanner(System.in);
+	protected char[] tab1D = new char[9];
+	protected File sudokuGrid;
+	protected Score score = new Score();
+	protected int err;
 	
 	
-	public Sudoku() {
-		selectGrid();
-		this.grille = new Grid(10,9,grilleSudoku);
+	public Sudoku(String s) {
+		sudokuGrid = new File(s);
+		this.g = new Grid(10,9,sudokuGrid);
 	}
 	
+	public Grid getGrille() {
+		return g;
+	}
+
 	public void selectGrid() {
 		int str = 0;
 
@@ -34,16 +40,16 @@ public class Sudoku {
 
 			switch(str) {
 			case 1 :
-				grilleSudoku = new File("GrilleSudoku/grille_facile.dat");
+				sudokuGrid = new File("GrilleSudoku/grille_facile.dat");
 				break;
 			case 2 : 
-				grilleSudoku = new File("GrilleSudoku/grille_moyen.dat");
+				sudokuGrid = new File("GrilleSudoku/grille_moyen.dat");
 				break;
 			case 3 :
-				grilleSudoku = new File("GrilleSudoku/grille_difficile.dat");
+				sudokuGrid = new File("GrilleSudoku/grille_difficile.dat");
 				break;
 			case 4 :
-				grilleSudoku = new File("GrilleSudoku/grille_expert.dat");
+				sudokuGrid = new File("GrilleSudoku/grille_expert.dat");
 				break;
 			default:
 				System.out.println("Veuillez entre une valeur entre 1 et 4");
@@ -51,10 +57,10 @@ public class Sudoku {
 		} while (str < 0 || str >= 4);
 	}
 
-	public boolean grilleRemplie() {
-		for(int i = 0; i < grille.getTab().length ; i++) {
-			for(int j = 0 ; j < grille.getTab().length ; j++) {
-				if(Character.compare(this.grille.getTab()[i][j],'0') == 0) {
+	public Boolean fullGrid() {
+		for(int i = 0; i < g.getTab().length ; i++) {
+			for(int j = 0 ; j < g.getTab().length ; j++) {
+				if(Character.compare(this.g.getTab()[i][j],'0') == 0) {
 					return false;
 				}
 			}
@@ -63,32 +69,10 @@ public class Sudoku {
 		return true;
 	}
 
-	public void afficherGrille() {
-		for(int i = 0; i < grille.getTab().length ; i++) {
-			System.out.println("+---++---++---++---++---++---++---++---++---+");
-			for(int j = 0 ; j < grille.getTab().length ; j++) {
-				System.out.print("| " + this.grille.getTab()[i][j] + " |");
-			}
-			System.out.println();
-		}
-		System.out.println("+---++---++---++---++---++---++---++---++---+");
-		System.out.println();
-		System.out.println(Arrays.deepToString(this.grille.getTab()));
-		System.out.println();
-	}
 	
-	public boolean estAutorise(char c) {
-		for(char tmp : this.grille.getTabAuto()) {
-			if(Character.compare(tmp, c) == 0) {
-				return true;
-			}
-		}
-		System.out.println("Valeur incorrecte");
-		return false;
-	}
 	
-	public void jouerUnCoup() {
-		int l = 0;
+	public char makeAMove(char val, int l, int c) {
+		/*int l = 0;
 		int c = 0;
 		char val = 0;
 		while(!grilleRemplie()) {
@@ -99,32 +83,34 @@ public class Sudoku {
 		c = sc.nextInt()-1;
 		sc.nextLine();
 		System.out.println("Entrez la valeur : ");
-		val = sc.nextLine().charAt(0);
+		val = sc.nextLine().charAt(0);*/
 		
-			if(estAutorise(val)) {
-				char tmp = grille.getTab()[l][c];
-				grille.getTab()[l][c] = val;
-				if((l < 0 && l >= 9) || (c < 0 && c >= 9) || Character.compare(tmp,'0') != 0 || !verifieUnicite()) {
+		System.out.println(val + " joué en "+l+","+c);
+				char tmp = g.getTab()[l][c];
+				g.setLetterAtIndex(l, c, val);
+				if((l < 0 && l >= 9) || (c < 0 && c >= 9) || !verifAll()) {
 					System.out.println("Coup incorrect");
-					grille.getTab()[l][c] = tmp;
+					g.getTab()[l][c] = tmp;
 				}
-			}
-			afficherGrille();
+				return g.getTab()[l][c];
+			
 		}
-		sc.close();
-	}
+		//sc.close();
+	
 
-	public boolean verifieLigne() {
+	public boolean verifLine() {
 		int cpt = 0;
-		for(char tmp : this.grille.getTabAuto()) {
-			for(int i = 0 ; i < grille.getTab().length ; i++) {
+		for(char tmp : this.g.getTabAuto()) {
+			
+			for(int i = 0 ; i < g.getTab().length ; i++) {
 				cpt = 0;
-				for(int j = 0; j < grille.getTab().length ; j++) {
-					if(Character.compare(tmp, this.grille.getTab()[i][j]) == 0 && cpt < 2) {
+				for(int j = 0; j < g.getTab().length ; j++) {
+					if(Character.compare(tmp, this.g.getTab()[i][j]) == 0 && cpt < 2) {
 						cpt++;
 					}
 					else if(cpt == 2) {
 						System.out.println("Valeur deja presente sur la ligne");
+						err=1;
 						return false;
 					}
 				}
@@ -133,17 +119,20 @@ public class Sudoku {
 		return true;
 	}
 
-	public boolean verifieColonne() {
+	public boolean verifColumn() {
 		int cpt = 0;
-		for(char tmp : this.grille.getTabAuto()) {
-			for(int i = 0 ; i < grille.getTab().length ; i++) {
+		for(char tmp : this.g.getTabAuto()) {
+			
+			for(int i = 0 ; i < g.getTab().length ; i++) {
 				cpt = 0;
-				for(int j = 0; j < grille.getTab().length ; j++) {
-					if(Character.compare(tmp, this.grille.getTab()[j][i]) == 0 && cpt < 2) {
+				for(int j = 0; j < g.getTab().length ; j++) {
+					if(Character.compare(tmp, this.g.getTab()[j][i]) == 0 && cpt < 2) {
+						
 						cpt++;
 					}
 					else if(cpt == 2) {
 						System.out.println("Valeur deja presente sur la colonne");
+						err=2;
 						return false;
 					}
 				}
@@ -156,16 +145,16 @@ public class Sudoku {
 		int pos = 0;
 		for(int i = x; i < x+3 ; i++) {
 			for(int j = y ; j < y+3 ; j++) {
-				this.tab1D[pos] = this.grille.getTab()[i][j];
+				this.tab1D[pos] = this.g.getTab()[i][j];
 				pos++;
 			}
 		}
 		return tab1D;
 	}
 
-	public boolean verifieRegion() {
+	public boolean verifRegion() {
 		int cpt = 0;
-		for(char tmp : this.grille.getTabAuto()) {
+		for(char tmp : this.g.getTabAuto()) {
 			cpt = 0;
 			for(int i = 0 ; i < 9 ; i = i+3) {
 				for(int j = 0 ; j < 9 ; j = j+3) {
@@ -173,10 +162,12 @@ public class Sudoku {
 					char[] tmp2 = tab2DTo1D(i, j);
 					for(int k = 0; k < tmp2.length ; k++) {
 						if(Character.compare(tmp, tmp2[k]) == 0 && cpt < 2) {
+							
 							cpt++;
 						}
-						else if(cpt == 2) {
+						else if(cpt >= 2) {
 							System.out.println("Valeur deja presente dans la region");
+							err=3;
 							return false;
 						}
 					}
@@ -186,10 +177,25 @@ public class Sudoku {
 		return true;
 	}
 	
-	public boolean verifieUnicite() {
-		if(verifieLigne() && verifieColonne() && verifieRegion()) {
+	public boolean verifAll() {
+		if(verifLine() && verifColumn() && verifRegion()) {
+			score.GoodAnswer(100);
+			err=0;
 			return true;
 		}
+		score.BadAnswer();
 		return false;
+	}
+	
+	public void deleteValue(int x, int y) {
+		g.setLetterAtIndex(x, y, '0');
+	}
+	
+	public int getScore() {
+		return score.getScore();
+	}
+	
+	public int getErr() {
+		return err;
 	}
 }

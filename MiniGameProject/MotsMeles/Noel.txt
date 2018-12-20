@@ -1,5 +1,4 @@
-bougie|boule|buche|cadeau|cheminee|chocolat|etoile|guirlande|hotte|houx|jouets|lutin|renne|sapin|traineau
-AZERTYUIOPQSD
+bougie-boule-buche-cadeau-cheminee-chocolat-etoile-guirlande-hotte-houx-jouets-lutin-renne-sapin-traineau
 NOBICHOCOLATA
 HOUNGRIENTIRO
 CHCIGORCADEAU

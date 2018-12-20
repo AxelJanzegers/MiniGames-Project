@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import java.util.Arrays;
 
 import java.util.Scanner;
 
@@ -15,22 +14,11 @@ import java.util.Scanner;
 
 public class Grid {
 
-<<<<<<< HEAD
 
 	char[][] tab;
 	File file;
-	File test = new File("GrilleSudoku/grille09x09_00.dat");
-
-	static File grilleSudoku;
 	char[] tabAuto;
 
-=======
-	char[][] tab;
-	File file;
-	//File test = new File("GrilleSudoku/grille09x09_00.dat");
-	//static File grilleSudoku;
-	char[] tabAuto;
->>>>>>> axel
 	int x,y;
 
 	Scanner sc = new Scanner(System.in);
@@ -57,10 +45,7 @@ public class Grid {
 		this.x = x;
 		this.y = y;
 		tab = new char[this.x-1][this.y];
-<<<<<<< HEAD
 
-=======
->>>>>>> axel
 		try {
 			FileInputStream fis= new FileInputStream(f);
 			InputStreamReader isr=new InputStreamReader(fis);
@@ -68,6 +53,7 @@ public class Grid {
 			String tmp;
 			tmp = br.readLine();	
 			tabAuto = tmp.toCharArray();
+			System.out.println();
 				for(int i=1 ; i < this.x ; i++) {
 					tmp = br.readLine();	
 					tab[i-1] = tmp.toCharArray();
@@ -81,12 +67,8 @@ public class Grid {
 			e.printStackTrace();
 
 		} 
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-		tabAuto = new char[9];
-		int str = 0;
-=======
+	}
 		
 	/*	int str = 0;
 >>>>>>> axel
@@ -162,22 +144,12 @@ public class Grid {
 				e.printStackTrace();
 			} 
 		}*/
-=======
->>>>>>> arthur
-	}
 
+	
 	public char[] getTabAuto() {
 		return tabAuto;
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> axel
-
-	public void setTabAuto(char[] tabAuto) {
-		this.tabAuto = tabAuto;
-	}
-	
 	public int getX() {
 		return x;
 	}
@@ -211,6 +183,13 @@ public class Grid {
 	 */
 	public char getLetterAtIndex(int x, int y) {
 		return tab[x][y];		
+	}
+	
+	/*
+	 * 
+	 */
+	public void setLetterAtIndex(int x, int y, char c) {
+		this.tab[x][y]=c;
 	}
 	
 	/*

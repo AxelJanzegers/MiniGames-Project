@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SudokuController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.WordokuController">
 	<!-- TODO Add Nodes -->
 	<bottom>
       <AnchorPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
@@ -16,7 +16,7 @@
          </children></AnchorPane>
    </bottom>
    <right>
-      <GridPane fx:id="grid" opacity="0.0" prefHeight="540.0" prefWidth="540.0" style="-fx-grid-lines-visible: true;" BorderPane.alignment="CENTER">
+      <GridPane fx:id="grid" prefHeight="540.0" prefWidth="540.0" style="-fx-grid-lines-visible: true;" BorderPane.alignment="CENTER">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -74,12 +74,17 @@
                   <Button fx:id="difficile" layoutX="66.0" layoutY="113.0" mnemonicParsing="false" onAction="#setFile" text="Difficile" />
                   <Button fx:id="normal" layoutX="66.0" layoutY="82.0" mnemonicParsing="false" onAction="#setFile" text="Normal" />
                   <Button fx:id="expert" layoutX="66.0" layoutY="144.0" mnemonicParsing="false" onAction="#setFile" prefHeight="21.0" prefWidth="68.0" text="Expert" />
-                  <Label fx:id="err" layoutX="8.0" layoutY="-1.0" prefHeight="68.0" prefWidth="179.0" text="       " wrapText="true" />
+                  <Label fx:id="err" layoutX="23.0" layoutY="2.0" prefHeight="44.0" prefWidth="154.0" text="    " />
                </children>
             </AnchorPane>
-            <Label layoutX="47.0" layoutY="23.0" text="SUDOKU">
+            <Label layoutX="59.0" layoutY="14.0" text="SUDOKU">
                <font>
-                  <Font size="42.0" />
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="159.0" layoutY="52.0" text="Lettres">
+               <font>
+                  <Font name="System Italic" size="21.0" />
                </font>
             </Label>
          </children>

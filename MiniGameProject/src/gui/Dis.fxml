@@ -17,16 +17,49 @@
       <Blend />
    </effect>
    <bottom>
-      <AnchorPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#quit" style="-fx-background-color: black;" text="Quitter" textFill="WHITE" />
+         </children></AnchorPane>
    </bottom>
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="175.0" layoutY="14.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="120.0" text="WORDOKU" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="sudoku" layoutX="340.0" layoutY="14.0" mnemonicParsing="false" onAction="#startSudoku" prefHeight="100.0" prefWidth="120.0" text="SUDOKU" />
-            <Button fx:id="hangman" layoutX="499.0" layoutY="14.0" mnemonicParsing="false" onAction="#startHangman" prefHeight="100.0" prefWidth="120.0" text="PENDU" />
-            <Button fx:id="motus" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#startMotus" prefHeight="100.0" prefWidth="120.0" text="MOTUS" />
-            <Button fx:id="wsp" layoutX="653.0" layoutY="14.0" mnemonicParsing="false" onAction="#startWSP" prefHeight="100.0" prefWidth="120.0" text="MOTS MELES" />
+            <Button fx:id="wordoku" layoutX="588.0" layoutY="317.0" mnemonicParsing="false" onAction="#startWordoku" prefHeight="63.0" prefWidth="197.0" text="Sudoku Lettres" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="sudoku" layoutX="588.0" layoutY="217.0" mnemonicParsing="false" onAction="#startSudoku" prefHeight="98.0" prefWidth="197.0" text="SUDOKU">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="34.0" />
+               </font>
+            </Button>
+            <Button fx:id="motus" layoutX="25.0" layoutY="215.0" mnemonicParsing="false" onAction="#startMotus" prefHeight="165.0" prefWidth="186.0" text="MOTUS">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="38.0" />
+               </font>
+            </Button>
+            <Button fx:id="wsp" layoutX="224.0" layoutY="215.0" mnemonicParsing="false" onAction="#startWSP" prefHeight="165.0" prefWidth="159.0" text="Mots Mêlés" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="33.0" />
+               </font>
+            </Button>
+            <Button fx:id="hangman" layoutX="394.0" layoutY="215.0" mnemonicParsing="false" onAction="#startHangman" prefHeight="165.0" prefWidth="183.0" text="PENDU">
+               <font>
+                  <Font name="Microsoft YaHei UI Light" size="38.0" />
+               </font>
+            </Button>
+            <Label layoutX="278.0" layoutY="14.0" text="BIENVENUE">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <Label layoutX="223.0" layoutY="122.0" text="Choisissez votre jeu">
+               <font>
+                  <Font size="37.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </center>

@@ -1,4 +1,4 @@
-aubergine|bettrave|carotte|chou|citrouille|comcombre|courgette|epinard|haricot|navet|poireau|radis
+aubergine-bettrave-carotte-chou-citrouille-comcombre-courgette-epinard-haricot-navet-poireau-radis
 DLECARTNERNIR
 HCBNCIEPINARD
 AMIRINDTHIVIA

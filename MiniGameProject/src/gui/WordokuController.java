@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import games.Sudoku;
+import games.SudokuL;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,11 +25,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class SudokuController implements Initializable{
+public class WordokuController implements Initializable{
 
-
-
-	private Sudoku s;
+	
+	
+	private SudokuL s;
 
 	//Bouton retour
 	@FXML
@@ -40,7 +40,7 @@ public class SudokuController implements Initializable{
 	private Label[][] numbers = new Label[9][9];
 	private Label Lselected = new Label();
 	private Boolean selection=false;
-
+	
 	@FXML
 	private Button cancel;
 	
@@ -75,52 +75,22 @@ public class SudokuController implements Initializable{
 	private Button b8;
 	@FXML
 	private Button b9;
-
+	
 	@FXML
 	private Label score;
 	@FXML 
 	private Label err;
-
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-err.setText("Choisissez une grille");
+		err.setText("Choisissez une grille");
+		
+		
 	}
 
-	@FXML
-	public void setFile(ActionEvent event) {
-		err.setText("");
-		buttons.setOpacity(1);
-		
-		grid.setOpacity(1);
-		
-		facile.setOpacity(0);
-		normal.setOpacity(0);
-		difficile.setOpacity(0);
-		expert.setOpacity(0);
-		
-		if (event.getSource().equals(facile)) {
-			s= new Sudoku("GrilleSudoku/grille_facile.dat");
-		}
-		else if(event.getSource().equals(normal)) {
-			s= new Sudoku("GrilleSudoku/grille_moyen.dat");
-		}
-		else if(event.getSource().equals(difficile)) {
-			s= new Sudoku("GrilleSudoku/grille_difficile.dat");
-		}
-		else {
-			s= new Sudoku("GrilleSudoku/grille_expert.dat");
-		}
-		facile.setOnAction(null);
-		normal.setOnAction(null);
-		difficile.setOnAction(null);
-		expert.setOnAction(null);
-		initialize2();
-	}
-	
+
 	public void initialize2() {
-		
-		
 		
 		/*
 		 * Affichage de la grille
@@ -131,9 +101,43 @@ err.setText("Choisissez une grille");
 				setLabel(i,j);
 			}
 		}
+		b1.setText(String.valueOf(s.getGrille().getTabAuto()[0]));
+		b2.setText(String.valueOf(s.getGrille().getTabAuto()[1]));
+		b3.setText(String.valueOf(s.getGrille().getTabAuto()[2]));
+		b4.setText(String.valueOf(s.getGrille().getTabAuto()[3]));
+		b5.setText(String.valueOf(s.getGrille().getTabAuto()[4]));
+		b6.setText(String.valueOf(s.getGrille().getTabAuto()[5]));
+		b7.setText(String.valueOf(s.getGrille().getTabAuto()[6]));
+		b8.setText(String.valueOf(s.getGrille().getTabAuto()[7]));
+		b9.setText(String.valueOf(s.getGrille().getTabAuto()[8]));
 		
 	}
-
+	@FXML
+	public void setFile(ActionEvent event) {
+		err.setText("");
+		buttons.setOpacity(1);
+		grid.setOpacity(1);
+		choiceBox.setOpacity(0);
+		
+		if (event.getSource().equals(facile)) {
+			s= new SudokuL("GrilleSudoku/grilleL_facile.dat");
+		}
+		else if(event.getSource().equals(normal)) {
+			s= new SudokuL("GrilleSudoku/grilleL_moyen.dat");
+		}
+		else if(event.getSource().equals(difficile)) {
+			s= new SudokuL("GrilleSudoku/grilleL_difficile.dat");
+		}
+		else {
+			s= new SudokuL("GrilleSudoku/grilleL_expert.dat");
+		}
+		facile.setOnAction(null);
+		normal.setOnAction(null);
+		difficile.setOnAction(null);
+		expert.setOnAction(null);
+		initialize2();
+	}
+	
 	/*
 	 * Creation du Label pour une case
 	 */
@@ -153,20 +157,20 @@ err.setText("Choisissez une grille");
 			 * On associe l'élément au clic de la souris
 			 */
 			numbers[i][j].setOnMouseClicked(new EventHandler<MouseEvent>
-			() {
+		    () {
 
-				@Override
-				public void handle(MouseEvent event) {
-					input(event);
-				}
-			});
+		        @Override
+		        public void handle(MouseEvent event) {
+		           input(event);
+		        }
+		    });
 		}
 		/*
 		 * Si la case est complétée au démarrage 
 		 */
 		else {
 			numbers[i][j].setId("base");
-			numbers[i][j].setStyle("-fx-border-color:black;-fx-background-color : lightyellow;-fx-font-size: 35;-fx-font-family:balthazar;");
+			numbers[i][j].setStyle("-fx-border-color:black;-fx-background-color : lightyellow;-fx-font-size: 35;");
 		}
 		numbers[i][j].setPrefSize(60,60);
 		numbers[i][j].setAlignment(Pos.CENTER);
@@ -184,16 +188,16 @@ err.setText("Choisissez une grille");
 		if(!this.selection) {
 			this.selection=true;
 			Lselected=((Label) event.getSource());
-			Lselected.setStyle("-fx-border-color:black;-fx-background-color : red;-fx-font-size: 35;-fx-font-family:balthazar;");
+			Lselected.setStyle("-fx-border-color:black;-fx-background-color : red;-fx-font-size: 35;");
 			cancel.setOpacity(1);
 		}
 		else {
-			Lselected.setStyle("-fx-border-color:black;-fx-background-color : white;-fx-font-size: 35;-fx-font-family:balthazar;");
+			Lselected.setStyle("-fx-border-color:black;-fx-background-color : white;-fx-font-size: 35;");
 			Lselected=((Label) event.getSource());
-			Lselected.setStyle("-fx-border-color:black;-fx-background-color : red;-fx-font-size: 35;-fx-font-family:balthazar;");
+			Lselected.setStyle("-fx-border-color:black;-fx-background-color : red;-fx-font-size: 35;");
 		}
 	}
-
+	
 	/*
 	 * Réception de la lettre
 	 */
@@ -212,13 +216,14 @@ err.setText("Choisissez une grille");
 			case 3: err.setText("Cette variable est déjà dans la région.");break;
 			default:break;
 			}
-			Lselected.setStyle("-fx-border-color:black;-fx-background-color : white;-fx-font-size: 35;-fx-font-family:balthazar;");
+			err.wrapTextProperty();
+			Lselected.setStyle("-fx-border-color:black;-fx-background-color : white;-fx-font-size: 35;");
 			score.setText("Score : "+s.getScore());
 			cancel.setOpacity(0);
 		}
-
+		
 	}
-
+	
 	/*
 	 * Annuler son coup
 	 */
@@ -226,7 +231,7 @@ err.setText("Choisissez une grille");
 	public void cancelMove(ActionEvent event) {
 		if(selection) {
 			this.selection=false;
-			Lselected.setStyle("-fx-border-color:black;-fx-background-color : white;-fx-font-size: 35;-fx-font-family:balthazar;");
+			Lselected.setStyle("-fx-border-color:black;-fx-background-color : white;-fx-font-size: 35;");
 			cancel.setOpacity(0);
 		}
 	}
@@ -241,10 +246,9 @@ err.setText("Choisissez une grille");
 			cancel.setOpacity(0);
 			s.deleteValue(GridPane.getRowIndex(Lselected), GridPane.getColumnIndex(Lselected));
 			Lselected.setText("");
-			Lselected.setStyle("-fx-border-color:black;-fx-background-color : white;-fx-font-size: 35;-fx-font-family:balthazar;");
+			Lselected.setStyle("-fx-border-color:black;-fx-background-color : white;-fx-font-size: 35;");
 		}
 	}
-
 	/*
 	 * Fonction de retour au menu principal
 	 */
@@ -262,7 +266,6 @@ err.setText("Choisissez une grille");
 			Stage playwindow = (Stage) (((Node) event.getSource()).getScene().getWindow());
 			playwindow.setScene(scene);
 		}
-
-
 	}
+
 }

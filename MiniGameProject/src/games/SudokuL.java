@@ -1,14 +1,11 @@
 package games;
 
 import java.io.File;
-import java.util.Scanner;
-
-import display.Grid;
 
 public class SudokuL extends Sudoku {
 
-	public SudokuL() {
-		super();
+	public SudokuL(String s) {
+		super(s);
 	}
 
 	@Override
@@ -22,16 +19,16 @@ public class SudokuL extends Sudoku {
 
 			switch(str) {
 			case 1 :
-				grilleSudoku = new File("GrilleSudoku/grilleL_facile.dat");
+				sudokuGrid = new File("GrilleSudoku/grilleL_facile.dat");
 				break;
 			case 2 : 
-				grilleSudoku = new File("GrilleSudoku/grilleL_moyen.dat");
+				sudokuGrid = new File("GrilleSudoku/grilleL_moyen.dat");
 				break;
 			case 3 :
-				grilleSudoku = new File("GrilleSudoku/grilleL_difficile.dat");
+				sudokuGrid = new File("GrilleSudoku/grilleL_difficile.dat");
 				break;
 			case 4 :
-				grilleSudoku = new File("GrilleSudoku/grilleL_expert.dat");
+				sudokuGrid = new File("GrilleSudoku/grilleL_expert.dat");
 				break;
 			default:
 				System.out.println("Veuillez entre une valeur entre 1 et 4 :");

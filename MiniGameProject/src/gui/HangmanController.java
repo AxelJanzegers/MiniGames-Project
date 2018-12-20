@@ -3,6 +3,7 @@ package gui;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -14,7 +15,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,7 +28,7 @@ public class HangmanController implements Initializable {
 
 	
 	//Déclaration du jeu
-	Hangman h = new Hangman();
+	Hangman h;
 	
 	//Mot affiché
 	@FXML
@@ -49,7 +53,7 @@ public class HangmanController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		
+		h = new Hangman();
 		word.setText(h.getAnswer()); //On affiche le mot à trouver dès l'ouverture de la fenêtre
 		images[0]=new File("/../../Pendu/Pendu0.jpg");
 		images[1]=new File("/../../Pendu/Pendu1.jpg");
@@ -66,10 +70,20 @@ public class HangmanController implements Initializable {
 	 */
 	@FXML
 	public void backToMenu(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("dis.fxml"));
-		Scene scene = new Scene(root);
-		Stage playwindow = (Stage) (((Node) event.getSource()).getScene().getWindow());
-		playwindow.setScene(scene);
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Des Chiffres et des Letters");
+		alert.setHeaderText("Voulez-vous quitter ?");
+		alert.setContentText("Votre progression ne sera sauvegardée.");
+
+		Optional<ButtonType> b = alert.showAndWait();
+		if (b.get()==ButtonType.OK) {
+			Parent root = FXMLLoader.load(getClass().getResource("dis.fxml"));
+			Scene scene = new Scene(root);
+			Stage playwindow = (Stage) (((Node) event.getSource()).getScene().getWindow());
+			playwindow.setScene(scene);
+		}
+
+
 	}
 	
 	/*

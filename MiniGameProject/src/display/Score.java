@@ -1,5 +1,7 @@
 package display;
 
+import games.Motus;
+
 public class Score {
 	
 	int combo;
@@ -8,6 +10,10 @@ public class Score {
 	
 	public Score() {
 		this.combo=1;
+		this.score=0;
+	}
+	
+	public Score(Motus m) {
 		this.score=0;
 	}
 	
@@ -21,6 +27,10 @@ public class Score {
 	public void GoodAnswer(int x) {
 		this.score += x*this.combo;
 		this.combo++;
+	}
+	
+	public void GoodAnswer(int x, int tries) {
+		this.score += x*tries;
 	}
 	
 	public void BadAnswer() {
